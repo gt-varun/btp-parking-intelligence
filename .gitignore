@@ -20,3 +20,6 @@ build/
 
 # Vite
 .vite
+ml/venv/
+ml/catboost_info/
+ml/output/
