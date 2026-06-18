@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Dataset
+ml/data/*.csv
+
+# Build files
+dist/
+build/
+
+# Mac files
+.DS_Store
+
+# Logs
+*.log
+
+# Vite
+.vite

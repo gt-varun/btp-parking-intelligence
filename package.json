@@ -1,0 +1,22 @@
+{
+  "name": "btp-mern",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "ml:train": "cd ml && python3 run_all.py",
+    "seed:ml": "cd server && npm run seed:ml",
+    "seed": "cd server && npm run seed",
+    "seed:all": "npm run ml:train && npm run seed:ml && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}

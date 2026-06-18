@@ -1,0 +1,12 @@
+{
+  "total_records": 298445,
+  "date_range": [
+    "2023-11-09",
+    "2024-04-08"
+  ],
+  "named_junctions": 168,
+  "geocoded_to_junction_pct": 50.4,
+  "rejection_rate_of_processed": 30.1,
+  "pending_pct": 42.0,
+  "repeat_offenders_3plus": 11928
+}

@@ -1,0 +1,364 @@
+{
+  "monthlyTrend": [
+    {
+      "month": "Nov",
+      "violations": 44117
+    },
+    {
+      "month": "Dec",
+      "violations": 63554
+    },
+    {
+      "month": "Jan",
+      "violations": 65813
+    },
+    {
+      "month": "Feb",
+      "violations": 54650
+    },
+    {
+      "month": "Mar",
+      "violations": 55229
+    },
+    {
+      "month": "Apr",
+      "violations": 15082
+    }
+  ],
+  "hourOfDay": [
+    {
+      "hour": 0,
+      "violations": 21760
+    },
+    {
+      "hour": 1,
+      "violations": 17155
+    },
+    {
+      "hour": 2,
+      "violations": 24770
+    },
+    {
+      "hour": 3,
+      "violations": 25707
+    },
+    {
+      "hour": 4,
+      "violations": 29102
+    },
+    {
+      "hour": 5,
+      "violations": 34085
+    },
+    {
+      "hour": 6,
+      "violations": 26890
+    },
+    {
+      "hour": 7,
+      "violations": 14608
+    },
+    {
+      "hour": 8,
+      "violations": 8556
+    },
+    {
+      "hour": 9,
+      "violations": 3145
+    },
+    {
+      "hour": 10,
+      "violations": 518
+    },
+    {
+      "hour": 11,
+      "violations": 577
+    },
+    {
+      "hour": 12,
+      "violations": 219
+    },
+    {
+      "hour": 13,
+      "violations": 56
+    },
+    {
+      "hour": 14,
+      "violations": 16
+    },
+    {
+      "hour": 15,
+      "violations": 66
+    },
+    {
+      "hour": 16,
+      "violations": 416
+    },
+    {
+      "hour": 17,
+      "violations": 818
+    },
+    {
+      "hour": 18,
+      "violations": 1971
+    },
+    {
+      "hour": 19,
+      "violations": 10713
+    },
+    {
+      "hour": 20,
+      "violations": 11834
+    },
+    {
+      "hour": 21,
+      "violations": 19763
+    },
+    {
+      "hour": 22,
+      "violations": 22839
+    },
+    {
+      "hour": 23,
+      "violations": 22861
+    }
+  ],
+  "dayOfWeek": [
+    {
+      "day": "Mon",
+      "violations": 38931
+    },
+    {
+      "day": "Tue",
+      "violations": 42929
+    },
+    {
+      "day": "Wed",
+      "violations": 43065
+    },
+    {
+      "day": "Thu",
+      "violations": 41528
+    },
+    {
+      "day": "Fri",
+      "violations": 41702
+    },
+    {
+      "day": "Sat",
+      "violations": 43427
+    },
+    {
+      "day": "Sun",
+      "violations": 46863
+    }
+  ],
+  "vehicleTypes": [
+    {
+      "vehicle_type": "SCOOTER",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.5185,
+      "share": 0.3178,
+      "rejectionRate": 0.311
+    },
+    {
+      "vehicle_type": "CAR",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.4564,
+      "share": 0.2978,
+      "rejectionRate": 0.2461
+    },
+    {
+      "vehicle_type": "MOTOR CYCLE",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.479,
+      "share": 0.1367,
+      "rejectionRate": 0.3168
+    },
+    {
+      "vehicle_type": "PASSENGER AUTO",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.507,
+      "share": 0.1267,
+      "rejectionRate": 0.3703
+    },
+    {
+      "vehicle_type": "MAXI-CAB",
+      "topViolation": "NO PARKING",
+      "topViolationShare": 0.4589,
+      "share": 0.0381,
+      "rejectionRate": 0.2455
+    },
+    {
+      "vehicle_type": "LGV",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.656,
+      "share": 0.0277,
+      "rejectionRate": 0.3237
+    },
+    {
+      "vehicle_type": "GOODS AUTO",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.6725,
+      "share": 0.0098,
+      "rejectionRate": 0.3227
+    },
+    {
+      "vehicle_type": "MOPED",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.5266,
+      "share": 0.0074,
+      "rejectionRate": 0.3194
+    },
+    {
+      "vehicle_type": "PRIVATE BUS",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.5475,
+      "share": 0.0055,
+      "rejectionRate": 0.397
+    },
+    {
+      "vehicle_type": "VAN",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.4823,
+      "share": 0.0049,
+      "rejectionRate": 0.3053
+    },
+    {
+      "vehicle_type": "TEMPO",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.4722,
+      "share": 0.0046,
+      "rejectionRate": 0.3597
+    },
+    {
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.3825,
+      "share": 0.0043,
+      "rejectionRate": 0.6306
+    },
+    {
+      "vehicle_type": "LORRY/GOODS VEHICLE",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.6061,
+      "share": 0.0038,
+      "rejectionRate": 0.3373
+    },
+    {
+      "vehicle_type": "HGV",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.4808,
+      "share": 0.0038,
+      "rejectionRate": 0.3455
+    },
+    {
+      "vehicle_type": "JEEP",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.4754,
+      "share": 0.0031,
+      "rejectionRate": 0.2722
+    },
+    {
+      "vehicle_type": "OTHERS",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.5274,
+      "share": 0.003,
+      "rejectionRate": 0.3509
+    },
+    {
+      "vehicle_type": "SCHOOL VEHICLE",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.5344,
+      "share": 0.0013,
+      "rejectionRate": 0.3565
+    },
+    {
+      "vehicle_type": "TOURIST BUS",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.4697,
+      "share": 0.0013,
+      "rejectionRate": 0.4355
+    },
+    {
+      "vehicle_type": "TANKER",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.5192,
+      "share": 0.0009,
+      "rejectionRate": 0.3224
+    },
+    {
+      "vehicle_type": "FACTORY BUS",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.6261,
+      "share": 0.0008,
+      "rejectionRate": 0.3719
+    },
+    {
+      "vehicle_type": "MINI LORRY",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.5276,
+      "share": 0.0007,
+      "rejectionRate": 0.3898
+    },
+    {
+      "vehicle_type": "TRACTOR",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.4688,
+      "share": 0.0002,
+      "rejectionRate": 0.5333
+    }
+  ],
+  "violationTypes": [
+    {
+      "type": "WRONG PARKING",
+      "count": 147490,
+      "rejectionRate": 0.336
+    },
+    {
+      "type": "NO PARKING",
+      "count": 128622,
+      "rejectionRate": 0.2579
+    },
+    {
+      "type": "PARKING IN A MAIN ROAD",
+      "count": 17084,
+      "rejectionRate": 0.3164
+    },
+    {
+      "type": "PARKING ON FOOTPATH",
+      "count": 2447,
+      "rejectionRate": 0.3382
+    },
+    {
+      "type": "DEFECTIVE NUMBER PLATE",
+      "count": 807,
+      "rejectionRate": 0.3526
+    },
+    {
+      "type": "PARKING NEAR ROAD CROSSING",
+      "count": 646,
+      "rejectionRate": 0.3365
+    },
+    {
+      "type": "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC",
+      "count": 594,
+      "rejectionRate": 0.3887
+    },
+    {
+      "type": "DOUBLE PARKING",
+      "count": 316,
+      "rejectionRate": 0.3202
+    },
+    {
+      "type": "PARKING OTHER THAN BUS STOP",
+      "count": 194,
+      "rejectionRate": 0.7238
+    },
+    {
+      "type": "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS",
+      "count": 125,
+      "rejectionRate": 0.3571
+    }
+  ]
+}

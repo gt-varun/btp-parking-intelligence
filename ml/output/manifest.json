@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-06-18T05:19:11Z",
+  "models": {
+    "cli": {
+      "module": "model_cli",
+      "outputFile": "ml/output/cli_scores.json",
+      "trainSeconds": 12.27
+    },
+    "forecast": {
+      "module": "model_forecast",
+      "outputFile": "ml/output/forecast.json",
+      "trainSeconds": 13.33
+    },
+    "ticketQuality": {
+      "module": "model_ticket_quality",
+      "outputFile": "ml/output/ticket_quality.json",
+      "trainSeconds": 12.26
+    },
+    "offenders": {
+      "module": "model_offenders",
+      "outputFile": "ml/output/offenders.json",
+      "trainSeconds": 30.14
+    }
+  },
+  "totalSeconds": 89.52,
+  "datasetSummary": {
+    "total_records": 298445,
+    "date_range": [
+      "2023-11-09",
+      "2024-04-08"
+    ],
+    "named_junctions": 168,
+    "geocoded_to_junction_pct": 50.4,
+    "rejection_rate_of_processed": 30.1,
+    "pending_pct": 42.0,
+    "repeat_offenders_3plus": 11928
+  }
+}
