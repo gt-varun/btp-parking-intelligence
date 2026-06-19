@@ -8,6 +8,12 @@ const ticketQualitySchema = new mongoose.Schema({
   model: { type: String, required: true },
   trainedOnTickets: Number,
   testAUC: Number,
+  testMetrics: {
+    accuracy: Number,
+    precision: Number,
+    recall: Number,
+    f1: Number,
+  },
   overallRejectionRate: Number,
   featureImportance: { type: mongoose.Schema.Types.Mixed },
   byVehicleType: [{ vehicle_type: String, rejectionRate: Number, n: Number }],

@@ -1,16 +1,22 @@
 {
-  "model": "LogisticRegression (one-hot cat features, class-balanced)",
+  "model": "StackingEnsemble (LogReg+RF+XGBoost+CatBoost -> LogReg meta)",
   "trainedOnTickets": 165154,
-  "testAUC": 0.6059,
+  "testAUC": 0.6978,
+  "testMetrics": {
+    "accuracy": 0.7247,
+    "precision": 0.6295,
+    "recall": 0.2093,
+    "f1": 0.3142
+  },
   "overallRejectionRate": 0.3013,
   "featureImportance": {
-    "police_station": 0.6141,
-    "vehicle_type": 0.2533,
-    "primary_violation": 0.0914,
-    "weekday_name": 0.034,
-    "n_violations_tagged": 0.0069,
-    "has_junction": 0.0002,
-    "hour": 0.0001
+    "police_station": 0.6745,
+    "vehicle_type": 0.1737,
+    "primary_violation": 0.0746,
+    "weekday_name": 0.0536,
+    "hour": 0.01,
+    "has_junction": 0.0073,
+    "n_violations_tagged": 0.0063
   },
   "byVehicleType": [
     {
@@ -1050,753 +1056,17 @@
   ],
   "pendingRiskSummary": {
     "totalPending": 125249,
-    "highRisk": 62134,
-    "mediumRisk": 62025,
-    "lowRisk": 1090
+    "highRisk": 2697,
+    "mediumRisk": 57415,
+    "lowRisk": 65137
   },
   "pendingSample": [
-    {
-      "id": "FKID057508",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8847,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID090978",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8836,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID031959",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING IN A MAIN ROAD",
-      "rejectionRisk": 0.8816,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID094806",
-      "junction": "Madiwala Traffic PS Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "DOUBLE PARKING",
-      "rejectionRisk": 0.8723,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID068755",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.869,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID068758",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.869,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID191704",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8661,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID124305",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8653,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID207263",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8631,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID135555",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8602,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID021873",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8602,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID089010",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8599,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID022209",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8596,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID102192",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8586,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID073601",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8582,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID091517",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.856,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID038919",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8541,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID242583",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8533,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID125221",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8527,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID125220",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8527,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID060857",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8526,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID071188",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.852,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID097168",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8517,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID094465",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8515,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID123739",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8505,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID225567",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8469,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID068942",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8451,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID082307",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8451,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID064635",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8451,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065151",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057431",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID108212",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065260",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID108210",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065133",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID108209",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID082474",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID108208",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID092634",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065232",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID092645",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID113066",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID113133",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID168184",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065207",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8448,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID082546",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8445,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID046924",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8445,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID046735",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8445,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057584",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8445,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057595",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8445,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID030999",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8423,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID031007",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8423,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID216775",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8415,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID160991",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING ON FOOTPATH",
-      "rejectionRisk": 0.8414,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID008671",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8412,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID008669",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8412,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID008667",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8412,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID008664",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8412,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID126645",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8411,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID118618",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.841,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID008688",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8409,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID008691",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8409,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID008673",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8409,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID118612",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8408,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID021001",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8396,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID103929",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8396,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID103928",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8396,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID076132",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.839,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID054123",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.839,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID075076",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.839,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID046649",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.839,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID075270",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057794",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID103950",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID054126",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID075326",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057831",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID075313",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID091127",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID076182",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057820",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID040451",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057741",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID075113",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID113168",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057759",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID057765",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8386,
-      "riskBand": "high"
-    },
     {
       "id": "FKID027900",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8376,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID060601",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID079298",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID060605",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID042380",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID042375",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
+      "rejectionRisk": 0.6834,
       "riskBand": "high"
     },
     {
@@ -1804,23 +1074,7 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID060744",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID078637",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
+      "rejectionRisk": 0.6823,
       "riskBand": "high"
     },
     {
@@ -1828,39 +1082,399 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8373,
+      "rejectionRisk": 0.6823,
       "riskBand": "high"
     },
     {
-      "id": "FKID093429",
+      "id": "FKID079298",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.837,
+      "rejectionRisk": 0.6823,
       "riskBand": "high"
     },
     {
-      "id": "FKID060801",
+      "id": "FKID078637",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.837,
+      "rejectionRisk": 0.6823,
       "riskBand": "high"
     },
     {
-      "id": "FKID060806",
+      "id": "FKID060744",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.837,
+      "rejectionRisk": 0.6823,
       "riskBand": "high"
     },
     {
-      "id": "FKID060812",
+      "id": "FKID060605",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.837,
+      "rejectionRisk": 0.6823,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID060601",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6823,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID042380",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6823,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID042375",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6823,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID021873",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6644,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID135555",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6644,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID082474",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID092645",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID065151",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID108212",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID065232",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID065260",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057431",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID092634",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID168184",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID065207",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID065133",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID113133",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID108209",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID108208",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID108210",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID113066",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6601,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013657",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013602",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013599",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013603",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013606",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013658",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013608",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013621",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID027223",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013609",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013619",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013622",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013640",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID036092",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6563,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID082307",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6558,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID068942",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6558,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID064635",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6558,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID254695",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6545,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013669",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.65,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013668",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.65,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013666",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.65,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013672",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.65,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013665",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.65,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013670",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.65,
       "riskBand": "high"
     },
     {
@@ -1868,255 +1482,39 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.837,
+      "rejectionRisk": 0.6494,
       "riskBand": "high"
     },
     {
-      "id": "FKID038227",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING IN A MAIN ROAD",
-      "rejectionRisk": 0.8352,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID060600",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.835,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID042476",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8342,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065463",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8298,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065453",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8298,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065459",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8298,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065471",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8298,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID066139",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8294,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065428",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8291,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID066141",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8291,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065408",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8291,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID066140",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8291,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID065440",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8291,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID092943",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8291,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID087849",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8287,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID062230",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8284,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID062225",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8284,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID041977",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8283,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID042219",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8283,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID039134",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING IN A MAIN ROAD",
-      "rejectionRisk": 0.8279,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID126402",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8277,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID135106",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8272,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID034704",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.827,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID021672",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8268,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID161071",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8268,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID091838",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8268,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID084278",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8265,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID109755",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8265,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID084287",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8265,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID062487",
+      "id": "FKID093429",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8265,
+      "rejectionRisk": 0.6494,
       "riskBand": "high"
     },
     {
-      "id": "FKID062507",
+      "id": "FKID060806",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8265,
+      "rejectionRisk": 0.6494,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID060812",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6494,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID060801",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6494,
       "riskBand": "high"
     },
     {
@@ -2124,23 +1522,23 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8265,
+      "rejectionRisk": 0.6429,
       "riskBand": "high"
     },
     {
-      "id": "FKID062538",
+      "id": "FKID062507",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8261,
+      "rejectionRisk": 0.6429,
       "riskBand": "high"
     },
     {
-      "id": "FKID062553",
+      "id": "FKID062487",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8261,
+      "rejectionRisk": 0.6429,
       "riskBand": "high"
     },
     {
@@ -2148,15 +1546,7 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8261,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID062609",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8261,
+      "rejectionRisk": 0.6395,
       "riskBand": "high"
     },
     {
@@ -2164,7 +1554,31 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8261,
+      "rejectionRisk": 0.6395,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062553",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6395,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062609",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6395,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062538",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6395,
       "riskBand": "high"
     },
     {
@@ -2172,479 +1586,111 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8261,
+      "rejectionRisk": 0.6395,
       "riskBand": "high"
     },
     {
-      "id": "FKID127322",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8259,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID080786",
+      "id": "FKID124305",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "rejectionRisk": 0.6371,
       "riskBand": "high"
     },
     {
-      "id": "FKID080746",
+      "id": "FKID082546",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "rejectionRisk": 0.6366,
       "riskBand": "high"
     },
     {
-      "id": "FKID062892",
+      "id": "FKID046924",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "rejectionRisk": 0.6366,
       "riskBand": "high"
     },
     {
-      "id": "FKID089491",
+      "id": "FKID057584",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "rejectionRisk": 0.6366,
       "riskBand": "high"
     },
     {
-      "id": "FKID062674",
+      "id": "FKID057595",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "rejectionRisk": 0.6366,
       "riskBand": "high"
     },
     {
-      "id": "FKID103850",
+      "id": "FKID046735",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "rejectionRisk": 0.6366,
       "riskBand": "high"
     },
     {
-      "id": "FKID062748",
+      "id": "FKID089010",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "rejectionRisk": 0.6354,
       "riskBand": "high"
     },
     {
-      "id": "FKID080777",
+      "id": "FKID038227",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6323,
       "riskBand": "high"
     },
     {
-      "id": "FKID062747",
+      "id": "FKID084376",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6309,
       "riskBand": "high"
     },
     {
-      "id": "FKID080770",
+      "id": "FKID109902",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "PARKING OTHER THAN BUS STOP",
-      "rejectionRisk": 0.8258,
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6309,
       "riskBand": "high"
     },
     {
-      "id": "FKID142055",
+      "id": "FKID064276",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8241,
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6266,
       "riskBand": "high"
     },
     {
-      "id": "FKID104724",
+      "id": "FKID064260",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8233,
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6266,
       "riskBand": "high"
     },
     {
-      "id": "FKID027945",
+      "id": "FKID064197",
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8213,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID028146",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.821,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID036335",
-      "junction": "Sahasra Hospital, Jayanagar",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8193,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID036447",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8192,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID036494",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8192,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID035544",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8192,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID243516",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8186,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID035869",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.818,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID035882",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.818,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID090018",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8175,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID064145",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8175,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID135951",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8174,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID003509",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8174,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID080333",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8142,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID107195",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8142,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID111948",
-      "junction": "Sahasra Hospital, Jayanagar",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8137,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID081445",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8137,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID048886",
-      "junction": "No Junction",
-      "vehicle_type": "MOTOR CYCLE",
-      "primary_violation": "PARKING NEAR ROAD CROSSING",
-      "rejectionRisk": 0.8133,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID121806",
-      "junction": "Sahasra Hospital, Jayanagar",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8125,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID121828",
-      "junction": "Sahasra Hospital, Jayanagar",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8125,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID276854",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8119,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID273062",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8117,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID120072",
-      "junction": "Gali Anjaneya Temple",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "NO PARKING",
-      "rejectionRisk": 0.8116,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID276217",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8107,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID276222",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8103,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID039903",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8101,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID039786",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8101,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID054060",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8101,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID045494",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8099,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID045493",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8099,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095388",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8097,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID046633",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8095,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID046367",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8095,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID046363",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8095,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID046631",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8095,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095366",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8093,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095365",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8093,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095361",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8093,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095370",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8093,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095362",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8093,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID102919",
-      "junction": "Mahalaxmi Layout Entrance",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8091,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095373",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8089,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID290062",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8089,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID290066",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8089,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID095371",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8089,
-      "riskBand": "high"
-    },
-    {
-      "id": "FKID051985",
-      "junction": "No Junction",
-      "vehicle_type": "BUS (BMTC/KSRTC)",
-      "primary_violation": "WRONG PARKING",
-      "rejectionRisk": 0.8089,
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6266,
       "riskBand": "high"
     },
     {
@@ -2652,7 +1698,967 @@
       "junction": "No Junction",
       "vehicle_type": "BUS (BMTC/KSRTC)",
       "primary_violation": "PARKING IN A MAIN ROAD",
-      "rejectionRisk": 0.8081,
+      "rejectionRisk": 0.626,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID219143",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.626,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID090102",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.626,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID060857",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6251,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID032852",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6237,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID096614",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6234,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID064103",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6234,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID096485",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6234,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID096870",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6234,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID096668",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6234,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID111325",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6234,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID075128",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6226,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID260807",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6217,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID123739",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6214,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID022209",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.6211,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID046982",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6205,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID046985",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6205,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID239687",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6205,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID110095",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6205,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID054358",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6199,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID060558",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6199,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID042406",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6199,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID027943",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6199,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID027987",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6199,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID127275",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6196,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID250078",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6196,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID127276",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6196,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID250056",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6196,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID097449",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6165,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID097445",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6165,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID268218",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6161,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID046981",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6159,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID046984",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6159,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID111954",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6159,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID046983",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6159,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID110064",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6159,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID070888",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6156,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID090400",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6136,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID064312",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6136,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID109903",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6134,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID008691",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.6084,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID008673",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.6084,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID008688",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.6084,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062554",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE",
+      "rejectionRisk": 0.6066,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID118612",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.6042,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID070605",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6036,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID070591",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6036,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID070590",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6036,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID045903",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6029,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID084756",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6029,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID064120",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6029,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID064122",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6029,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID031959",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6013,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID118618",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.6,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID080770",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID080777",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID080786",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062747",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062748",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062674",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID080746",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID089491",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID062892",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID103850",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5996,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID160991",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING ON FOOTPATH",
+      "rejectionRisk": 0.5994,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID054123",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5991,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID075076",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5991,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID076132",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5991,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID046649",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5991,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID278863",
+      "junction": "No Junction",
+      "vehicle_type": "PASSENGER AUTO",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5981,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID054126",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID091127",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID075113",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID075326",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID075270",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID075313",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057820",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057794",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057831",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057765",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID040451",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID103950",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057741",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID076182",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID113168",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057759",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5977,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID107195",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.596,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID080333",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.596,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013664",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5943,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013667",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5943,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013624",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5938,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID109590",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5936,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID102192",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5936,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID084218",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5929,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID063370",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5924,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID067375",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5919,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID111378",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5919,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID021828",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5919,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID067343",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5919,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID091589",
+      "junction": "No Junction",
+      "vehicle_type": "PRIVATE BUS",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5915,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID091563",
+      "junction": "No Junction",
+      "vehicle_type": "PRIVATE BUS",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5915,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID091562",
+      "junction": "No Junction",
+      "vehicle_type": "PRIVATE BUS",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5915,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID034704",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5909,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID054133",
+      "junction": "No Junction",
+      "vehicle_type": "SCOOTER",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5909,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID069542",
+      "junction": "No Junction",
+      "vehicle_type": "SCOOTER",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5909,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID054143",
+      "junction": "No Junction",
+      "vehicle_type": "SCOOTER",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5909,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID095388",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5893,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID030999",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5865,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID031007",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING OTHER THAN BUS STOP",
+      "rejectionRisk": 0.5865,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID095366",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.585,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID095365",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.585,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID095362",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.585,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID095361",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.585,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID095370",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.585,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID113609",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5842,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID057126",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5842,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID005960",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5842,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID087888",
+      "junction": "No Junction",
+      "vehicle_type": "BUS (BMTC/KSRTC)",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.5839,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID245245",
+      "junction": "Safina Plaza Junction",
+      "vehicle_type": "PASSENGER AUTO",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5828,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID038482",
+      "junction": "No Junction",
+      "vehicle_type": "MOTOR CYCLE",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5824,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID245097",
+      "junction": "No Junction",
+      "vehicle_type": "MOTOR CYCLE",
+      "primary_violation": "WRONG PARKING",
+      "rejectionRisk": 0.5824,
       "riskBand": "high"
     }
   ]

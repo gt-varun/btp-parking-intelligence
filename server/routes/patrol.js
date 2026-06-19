@@ -42,6 +42,16 @@ router.get("/forecast", async (_req, res, next) => {
   } catch (err) { next(err); }
 });
 
+// GET /api/patrol/forecast-meta — model name + back-test error bar for the
+// forecast. Separate from /forecast so the bare-array contract stays intact.
+router.get("/forecast-meta", async (_req, res, next) => {
+  try {
+    const forecast = await Forecast.findOne({}).sort({ generatedAt: -1 }).lean();
+    if (!forecast) return res.json({ model: null, backtest: null });
+    res.json({ model: forecast.model, backtest: forecast.backtest ?? null });
+  } catch (err) { next(err); }
+});
+
 // GET /api/patrol/gaps — junctions with high model-predicted CLI score and
 // elevated 7-day forecast load. (No enforcement/patrol-roster data exists in
 // the raw dataset, so "enforcementLevel" here is a deployment-recommendation

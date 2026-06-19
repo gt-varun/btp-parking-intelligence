@@ -72,6 +72,7 @@ async function seedForecast(forecast) {
     forecastStart: forecast.forecastStart,
     horizonDays: forecast.horizonDays,
     trainedOnJunctionDays: forecast.trainedOnJunctionDays,
+    backtest: forecast.backtest,
     days: forecast.days,
     perJunction: forecast.perJunction,
     generatedAt: new Date(),
@@ -85,6 +86,7 @@ async function seedTicketQuality(tq) {
     model: tq.model,
     trainedOnTickets: tq.trainedOnTickets,
     testAUC: tq.testAUC,
+    testMetrics: tq.testMetrics,
     overallRejectionRate: tq.overallRejectionRate,
     featureImportance: tq.featureImportance,
     byVehicleType: tq.byVehicleType,
@@ -109,6 +111,8 @@ async function seedOffenders(off) {
     daysSinceLastSeen: o.daysSinceLastSeen,
     escalationScore: o.escalationScore,
     tier: o.tier,
+    behaviourSegment: o.behaviourSegment,
+    behaviourConfidence: o.behaviourConfidence,
     mlModel: off.model,
     mlGeneratedAt: new Date(),
   }));
@@ -116,7 +120,79 @@ async function seedOffenders(off) {
   console.log(`🚨  Seeded ${docs.length} offender records from model_offenders.py (tiers: ${JSON.stringify(off.tierCounts)})`);
 }
 
-async function seedMeta(manifest, datasetSummary) {
+// Build the per-feature validation summary rendered by the Model Validation
+// panel. Reads straight from each model's JSON output so the numbers shown to
+// judges are exactly what the trained models reported — nothing hand-typed.
+function buildModelCards({ cli, forecast, tq, offenders }) {
+  const pct = (v) => (v == null ? null : `${(v * 100).toFixed(1)}%`);
+  return [
+    {
+      key: "ticketQuality",
+      feature: "Ticket rejection prediction",
+      model: tq.model,
+      task: "Binary classification",
+      learning: "Supervised",
+      metrics: [
+        { label: "Test AUC", value: tq.testAUC?.toFixed?.(3) ?? String(tq.testAUC) },
+        { label: "Accuracy", value: pct(tq.testMetrics?.accuracy) },
+        { label: "F1", value: tq.testMetrics?.f1?.toFixed?.(3) ?? null },
+      ].filter((m) => m.value != null),
+      note: `${(tq.trainedOnTickets ?? 0).toLocaleString("en-IN")} labelled tickets · stratified 20% hold-out`,
+    },
+    {
+      key: "cli",
+      feature: "Junction severity (heat map)",
+      model: cli.model,
+      task: "Regression",
+      learning: "Supervised (engineered target)",
+      metrics: [
+        {
+          label: "CV R²",
+          value: cli.validation?.cvR2Mean != null
+            ? `${cli.validation.cvR2Mean.toFixed(3)} ± ${cli.validation.cvR2Std.toFixed(2)}`
+            : null,
+        },
+        { label: "In-sample R²", value: cli.validation?.r2?.toFixed?.(3) ?? null },
+      ].filter((m) => m.value != null),
+      note: `${cli.validation?.cvFolds ?? 5}-fold CV on the lane-hours-lost capacity target`,
+    },
+    {
+      key: "forecast",
+      feature: "7-day patrol forecast",
+      model: forecast.model,
+      task: "Time-series regression",
+      learning: "Supervised",
+      metrics: [
+        { label: "Back-test MAE", value: forecast.backtest?.mae != null ? String(forecast.backtest.mae) : null },
+        { label: "vs naive", value: forecast.backtest?.improvementVsNaivePct != null ? `+${forecast.backtest.improvementVsNaivePct}%` : null },
+      ].filter((m) => m.value != null),
+      note: forecast.backtest?.method ?? "time-based hold-out",
+    },
+    {
+      key: "offenders",
+      feature: "Repeat-offender tiers",
+      model: offenders.model,
+      task: "Clustering + percentile tiers",
+      learning: "Unsupervised",
+      metrics: [
+        { label: "Silhouette", value: offenders.validation?.silhouette != null ? String(offenders.validation.silhouette) : null },
+        { label: "Components", value: offenders.validation?.nComponents != null ? String(offenders.validation.nComponents) : null },
+      ].filter((m) => m.value != null),
+      note: "Low silhouette = offender behaviour is a continuum; tiers use percentile cut-offs, GMM supplies soft confidence",
+    },
+    {
+      key: "descriptive",
+      feature: "Descriptive analytics",
+      model: "Pandas aggregation",
+      task: "Aggregation",
+      learning: "Not a model",
+      metrics: [{ label: "Source", value: "Exact dataset counts" }],
+      note: "Real monthly / hourly / weekday distributions — no prediction involved",
+    },
+  ];
+}
+
+async function seedMeta(manifest, datasetSummary, modelCards) {
   await MLMeta.findOneAndUpdate(
     { key: "current" },
     {
@@ -125,10 +201,11 @@ async function seedMeta(manifest, datasetSummary) {
       totalSeconds: manifest.totalSeconds,
       models: manifest.models,
       summary: datasetSummary,
+      modelCards,
     },
     { upsert: true }
   );
-  console.log("🧠  Seeded ML run metadata");
+  console.log(`🧠  Seeded ML run metadata + ${modelCards.length} model cards`);
 }
 
 async function seedDescriptiveStats(stats) {
@@ -161,7 +238,8 @@ export async function seedFromML({ disconnect = true } = {}) {
   await seedTicketQuality(ticketQuality);
   await seedOffenders(offenders);
   await seedDescriptiveStats(descriptiveStats);
-  await seedMeta(manifest, datasetSummary);
+  const modelCards = buildModelCards({ cli, forecast, tq: ticketQuality, offenders });
+  await seedMeta(manifest, datasetSummary, modelCards);
 
   console.log("\n✅  ML seed complete — all predicted values now live in MongoDB.");
   if (disconnect) await mongoose.disconnect();

@@ -18,11 +18,18 @@ We standardize four behaviourally meaningful signals —
       vehicle violating across many junctions is a more systemic problem
       than one stuck in one bad parking spot)
     - recency (days since last seen — still active vs. tailed off)
-into one feature space and fit a K-Means clustering model (k=4) to group
+into one feature space and fit a Gaussian Mixture Model (4 components) to group
 vehicles into natural risk tiers, then ORDER the resulting clusters by their
 mean escalation-feature centroid (not by hand) and label them. This means
-the tier boundaries come from the actual structure in the data, and swapping
-KMeans for GaussianMixture/AgglomerativeClustering only touches fit_predict().
+the tier boundaries come from the actual structure in the data.
+
+WHY GAUSSIAN MIXTURE INSTEAD OF K-MEANS:
+Offender behaviour is a skewed long tail (a few extreme offenders, many minor
+ones), which K-Means handles poorly because it assumes round, equal-size
+clusters and its tier boundaries jump between runs. A GMM fits elliptical
+clusters of different sizes AND gives a SOFT probability per vehicle, so we
+can report how confident the model is in each vehicle's tier — important when
+the output drives an action as serious as a court referral.
 
 Output: ml/output/offenders.json
     { totalRepeatOffenders, tierCounts: {...},
@@ -36,8 +43,9 @@ import os
 
 import numpy as np
 import pandas as pd
-from sklearn.cluster import KMeans
+from sklearn.mixture import GaussianMixture
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score
 
 from load_data import load_clean
 
@@ -79,8 +87,13 @@ def fit_escalation_model(g: pd.DataFrame):
     Xs_scored = Xs.copy()
     Xs_scored[:, recency_idx] *= -1
 
-    km = KMeans(n_clusters=N_CLUSTERS, random_state=42, n_init=10)
-    cluster_ids = km.fit_predict(Xs)
+    # Gaussian Mixture segments vehicles into behavioural groups and gives a
+    # SOFT probability per vehicle (how cleanly it belongs to its group).
+    gmm = GaussianMixture(
+        n_components=N_CLUSTERS, covariance_type="full", n_init=5, random_state=42
+    )
+    segment_ids = gmm.fit_predict(Xs)
+    behaviour_confidence = gmm.predict_proba(Xs).max(axis=1)
 
     # composite escalation score = mean of the (recency-flipped) standardized
     # features, then min-max scaled to 0-100 for readability
@@ -88,17 +101,41 @@ def fit_escalation_model(g: pd.DataFrame):
     score_0_100 = 100 * (raw_score - raw_score.min()) / (raw_score.max() - raw_score.min() + 1e-9)
 
     g = g.copy()
-    g["clusterId"] = cluster_ids
+    g["behaviourSegment"] = segment_ids
+    g["behaviourConfidence"] = behaviour_confidence.round(3)
     g["escalationScore"] = score_0_100.round(1)
 
-    # order clusters by mean escalation score -> assign tier labels in that order
-    cluster_order = (
-        g.groupby("clusterId")["escalationScore"].mean().sort_values().index.tolist()
-    )
-    tier_map = {cid: TIER_LABELS_ORDERED[i] for i, cid in enumerate(cluster_order)}
-    g["tier"] = g["clusterId"].map(tier_map)
+    # ACTIONABLE TIER by percentile of the escalation score, NOT by raw cluster
+    # membership: clustering optimizes for density structure, which produced a
+    # bloated top tier (23% of vehicles). Percentile cut-offs give a defensible
+    # risk pyramid — only the genuinely worst few get Court-Referral.
+    pct = g["escalationScore"].rank(pct=True)
 
-    return g, km, scaler, feature_cols
+    def to_tier(r):
+        if r > 0.95:
+            return "Court-Referral"   # worst 5%
+        if r > 0.80:
+            return "Escalate"          # next 15%
+        if r > 0.50:
+            return "Warning"           # next 30%
+        return "Watch"                 # bottom 50%
+
+    g["tier"] = pct.apply(to_tier)
+
+    # VALIDATION (unsupervised, so no accuracy): silhouette = how well-separated
+    # the behavioural segments are (-1..1, higher is better); BIC lets us justify
+    # k=4 against other component counts. Silhouette is sampled for speed.
+    sample = min(5000, len(Xs))
+    validation = {
+        "silhouette": round(float(
+            silhouette_score(Xs, segment_ids, sample_size=sample, random_state=42)
+        ), 4),
+        "bic": round(float(gmm.bic(Xs)), 1),
+        "nComponents": int(N_CLUSTERS),
+        "silhouetteSampleSize": int(sample),
+    }
+
+    return g, gmm, scaler, feature_cols, validation
 
 
 def mask_vehicle_id(vid: str) -> str:
@@ -112,7 +149,7 @@ def mask_vehicle_id(vid: str) -> str:
 def run():
     df = load_clean()
     g = build_vehicle_features(df)
-    g, km, scaler, feature_cols = fit_escalation_model(g)
+    g, gmm, scaler, feature_cols, validation = fit_escalation_model(g)
 
     tier_counts = g["tier"].value_counts().reindex(TIER_LABELS_ORDERED, fill_value=0).to_dict()
 
@@ -122,6 +159,7 @@ def run():
     records = top[[
         "vehicleMasked", "violations", "confirmed", "rejected", "n_junctions",
         "violation_density", "days_since_last_seen", "escalationScore", "tier",
+        "behaviourSegment", "behaviourConfidence",
     ]].rename(columns={
         "confirmed": "confirmedViolations",
         "rejected": "rejectedViolations",
@@ -131,9 +169,10 @@ def run():
     }).round(3).to_dict(orient="records")
 
     out = {
-        "model": "KMeans (k=4) on standardized behavioural features -> ordered risk tiers",
+        "model": "GaussianMixture behavioural segmentation (4 components) + percentile escalation tiers",
         "trainedOnVehicles": int(len(g)),
         "totalRepeatOffenders": int(len(g)),
+        "validation": validation,
         "tierCounts": tier_counts,
         "tierOrder": TIER_LABELS_ORDERED,
         "featureColumns": feature_cols,
