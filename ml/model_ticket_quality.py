@@ -13,13 +13,22 @@ upstream data-capture/process issues before tickets are filed, and (2) scores
 the 125k STILL-PENDING tickets with a predicted rejection probability so
 reviewers can triage the backlog by predicted risk instead of FIFO.
 
-SWAPPABLE: swap LogisticRegression for GradientBoostingClassifier /
-RandomForestClassifier below; everything downstream (feature encoding,
-junction/global aggregation, JSON contract) is unchanged as long as the
-model exposes .fit(X, y) / .predict_proba(X).
+PRODUCTION MODEL = STACKING ENSEMBLE. We benchmarked four families on one
+identical hold-out split (see benchmark_ticket_quality.py / _stack.py):
+    Stacking      AUC 0.698  acc 0.725   <-- best, shipped here
+    XGBoost       AUC 0.696  acc 0.720
+    CatBoost      AUC 0.686  acc 0.717
+    RandomForest  AUC 0.677  acc 0.629
+    LogReg        AUC 0.606  acc 0.570
+The stack blends LogReg + RandomForest + XGBoost + CatBoost via a logistic
+meta-learner trained on 3-fold out-of-fold predictions — the standard,
+leakage-safe way to combine models. It is the genuine best of the four
+families plus their ensemble; the AUC ceiling (~0.70) is set by the data
+(rejection is mostly decided by which police station reviews the ticket),
+not the algorithm.
 
 Output: ml/output/ticket_quality.json
-    { overallRejectionRate, modelAUC, featureImportance: {...},
+    { model, testAUC, overallRejectionRate, featureImportance: {...},
       byVehicleType: [...], byViolationType: [...],
       byJunction: [{junction, rejectionRate, n}, ...],
       pendingRiskSummary: { highRisk, mediumRisk, lowRisk, totalPending } }
@@ -31,7 +40,12 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import roc_auc_score
+from sklearn.ensemble import RandomForestClassifier, StackingClassifier
+from xgboost import XGBClassifier
+from catboost import CatBoostClassifier
+from sklearn.metrics import (
+    roc_auc_score, accuracy_score, precision_score, recall_score, f1_score,
+)
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -46,11 +60,34 @@ NUM_FEATURES = ["hour", "n_violations_tagged", "has_junction"]
 
 
 def build_pipeline():
+    """Stacking ensemble: 4 base learners -> logistic meta-learner.
+    OneHotEncoder is dense (sparse_output=False) so every base model — including
+    CatBoost — gets a uniform numeric matrix."""
     pre = ColumnTransformer([
-        ("cat", OneHotEncoder(handle_unknown="ignore"), CAT_FEATURES),
+        ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), CAT_FEATURES),
     ], remainder="passthrough")
-    # NOTE: swap this single line to try a different model family
-    clf = LogisticRegression(max_iter=300, class_weight="balanced")
+
+    base = [
+        ("logreg", LogisticRegression(max_iter=300, class_weight="balanced")),
+        ("rf", RandomForestClassifier(
+            n_estimators=300, max_depth=18, min_samples_leaf=5,
+            class_weight="balanced", n_jobs=-1, random_state=42)),
+        ("xgb", XGBClassifier(
+            n_estimators=300, max_depth=8, learning_rate=0.05,
+            subsample=0.8, colsample_bytree=0.8,
+            objective="binary:logistic", eval_metric="auc",
+            random_state=42, n_jobs=-1)),
+        ("cat", CatBoostClassifier(
+            iterations=300, depth=8, learning_rate=0.05,
+            loss_function="Logloss", verbose=0, random_seed=42)),
+    ]
+    clf = StackingClassifier(
+        estimators=base,
+        final_estimator=LogisticRegression(max_iter=500),
+        stack_method="predict_proba",
+        cv=3,
+        n_jobs=1,
+    )
     return Pipeline([("pre", pre), ("clf", clf)])
 
 
@@ -69,10 +106,19 @@ def run():
         X, y, test_size=0.2, random_state=42, stratify=y
     )
 
+    print("Training stacking ensemble (4 base models x 3-fold CV) — a few minutes...")
     pipe = build_pipeline()
     pipe.fit(X_train, y_train)
+
     proba_test = pipe.predict_proba(X_test)[:, 1]
+    pred_test = (proba_test >= 0.5).astype(int)
     auc = roc_auc_score(y_test, proba_test)
+    metrics = {
+        "accuracy": round(float(accuracy_score(y_test, pred_test)), 4),
+        "precision": round(float(precision_score(y_test, pred_test, zero_division=0)), 4),
+        "recall": round(float(recall_score(y_test, pred_test, zero_division=0)), 4),
+        "f1": round(float(f1_score(y_test, pred_test, zero_division=0)), 4),
+    }
 
     # refit on all labeled data for the production scoring pass
     pipe.fit(X, y)
@@ -92,22 +138,23 @@ def run():
     pending["riskBand"] = pending["rejectionRisk"].apply(risk_band)
     risk_counts = pending["riskBand"].value_counts().to_dict()
 
-    # feature importance proxy: logistic regression coefficients mapped back
-    # to the original (pre-one-hot) categorical columns by summing |coef|
-    # across that column's one-hot levels, normalized to sum to 1.
+    # feature importance: read the fitted XGBoost base member of the stack
+    # (gain-based) and aggregate its one-hot columns back to the original
+    # feature names, normalized to sum to 1 — keeps the JSON contract stable.
+    stack = pipe.named_steps["clf"]
     ohe = pipe.named_steps["pre"].named_transformers_["cat"]
     cat_names = ohe.get_feature_names_out(CAT_FEATURES)
-    coefs = pipe.named_steps["clf"].coef_[0]
+    importances = stack.named_estimators_["xgb"].feature_importances_
     n_cat = len(cat_names)
-    cat_coefs = coefs[:n_cat]
-    num_coefs = coefs[n_cat:]
+    cat_imp = importances[:n_cat]
+    num_imp = importances[n_cat:]
 
     importance = {}
     for col in CAT_FEATURES:
-        mask = [name.startswith(f"{col}_") for name in cat_names]
-        importance[col] = float(np.abs(cat_coefs[mask]).sum())
-    for col, c in zip(NUM_FEATURES, num_coefs):
-        importance[col] = float(np.abs(c))
+        mask = np.array([name.startswith(f"{col}_") for name in cat_names])
+        importance[col] = float(cat_imp[mask].sum())
+    for col, c in zip(NUM_FEATURES, num_imp):
+        importance[col] = float(c)
     total_imp = sum(importance.values()) or 1.0
     importance = {k: round(v / total_imp, 4) for k, v in sorted(importance.items(), key=lambda kv: -kv[1])}
 
@@ -133,9 +180,10 @@ def run():
     )
 
     out = {
-        "model": "LogisticRegression (one-hot cat features, class-balanced)",
+        "model": "StackingEnsemble (LogReg+RF+XGBoost+CatBoost -> LogReg meta)",
         "trainedOnTickets": int(len(labeled)),
         "testAUC": round(float(auc), 4),
+        "testMetrics": metrics,
         "overallRejectionRate": round(float(y.mean()), 4),
         "featureImportance": importance,
         "byVehicleType": by_vehicle.round(4).to_dict(orient="records"),
@@ -157,7 +205,7 @@ def run():
         json.dump(out, f, indent=2)
 
     print(f"Wrote ticket quality model -> {OUT_PATH}")
-    print("Test AUC:", round(auc, 4), "| Overall rejection rate:", round(float(y.mean()), 4))
+    print("Test AUC:", round(auc, 4), "| metrics:", metrics)
     print("Feature importance:", importance)
     print("Pending risk bands:", risk_counts)
 

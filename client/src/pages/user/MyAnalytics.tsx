@@ -7,7 +7,7 @@ import { FileText, Wallet, AlertCircle, MapPin } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell, Legend } from "recharts";
 import api from "@/lib/api";
 
-const COLORS = ["#1e3a8a", "#f59e0b", "#dc2626", "#10b981", "#8b5cf6"];
+const COLORS = ["var(--navy)", "var(--warning)", "var(--critical)", "var(--normal)", "var(--saffron)"];
 
 export default function MyAnalytics() {
   const { user } = useAuth();
@@ -57,7 +57,7 @@ export default function MyAnalytics() {
                 <XAxis dataKey="month" tick={{ fontSize: 12 }} />
                 <YAxis allowDecimals={false} tick={{ fontSize: 12 }} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#1e3a8a" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="count" fill="var(--navy)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>

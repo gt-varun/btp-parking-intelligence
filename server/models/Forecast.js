@@ -25,6 +25,7 @@ const forecastSchema = new mongoose.Schema({
   forecastStart: { type: String, required: true },  // "YYYY-MM-DD"
   horizonDays: { type: Number, default: 7 },
   trainedOnJunctionDays: { type: Number },
+  backtest: { type: mongoose.Schema.Types.Mixed }, // { mae, mape, naiveMae, improvementVsNaivePct }
   days: [forecastDaySchema],
   perJunction: { type: mongoose.Schema.Types.Mixed }, // { junctionCode: [7 predicted values] }
   generatedAt: { type: Date, default: Date.now },

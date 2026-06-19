@@ -43,7 +43,7 @@ export default function Tickets() {
   const lostRevenue = totalFines * summary.overallRejection;
   const savedRevenue = lostRevenue * (improvement / 100);
   const avgChallan = summary.avgChallan;
-  const COLORS = ["#dc2626", "#f59e0b", "#1e3a8a", "#16a34a", "#8b5cf6", "#6b7280"];
+  const COLORS = ["var(--critical)", "var(--warning)", "var(--navy)", "var(--normal)", "var(--saffron)", "var(--muted-foreground)"];
 
   const top10 = [...junctions].sort((a: any, b: any) => b.violations - a.violations).slice(0, 10);
 

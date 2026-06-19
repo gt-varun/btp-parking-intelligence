@@ -1,12 +1,18 @@
 {
-  "model": "KMeans (k=4) on standardized behavioural features -> ordered risk tiers",
+  "model": "GaussianMixture behavioural segmentation (4 components) + percentile escalation tiers",
   "trainedOnVehicles": 35785,
   "totalRepeatOffenders": 35785,
+  "validation": {
+    "silhouette": 0.1056,
+    "bic": 88950.8,
+    "nComponents": 4,
+    "silhouetteSampleSize": 5000
+  },
   "tierCounts": {
-    "Watch": 11860,
-    "Warning": 11330,
-    "Escalate": 11121,
-    "Court-Referral": 1474
+    "Watch": 17778,
+    "Warning": 10785,
+    "Escalate": 5422,
+    "Court-Referral": 1800
   },
   "tierOrder": [
     "Watch",
@@ -31,7 +37,9 @@
       "violationsPerActiveDay": 0.407,
       "daysSinceLastSeen": 9,
       "escalationScore": 100.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -42,7 +50,9 @@
       "violationsPerActiveDay": 0.353,
       "daysSinceLastSeen": 31,
       "escalationScore": 93.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****71",
@@ -53,7 +63,9 @@
       "violationsPerActiveDay": 0.279,
       "daysSinceLastSeen": 4,
       "escalationScore": 90.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****14",
@@ -64,7 +76,9 @@
       "violationsPerActiveDay": 0.331,
       "daysSinceLastSeen": 25,
       "escalationScore": 81.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******90",
@@ -75,7 +89,9 @@
       "violationsPerActiveDay": 15.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 81.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******21",
@@ -86,7 +102,9 @@
       "violationsPerActiveDay": 15.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 81.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******01",
@@ -97,7 +115,9 @@
       "violationsPerActiveDay": 15.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 81.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******65",
@@ -108,7 +128,9 @@
       "violationsPerActiveDay": 0.236,
       "daysSinceLastSeen": 4,
       "escalationScore": 79.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****06",
@@ -119,7 +141,9 @@
       "violationsPerActiveDay": 0.292,
       "daysSinceLastSeen": 12,
       "escalationScore": 77.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******88",
@@ -130,7 +154,9 @@
       "violationsPerActiveDay": 13.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 71.3,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******53",
@@ -141,7 +167,9 @@
       "violationsPerActiveDay": 13.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 69.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****18",
@@ -152,7 +180,9 @@
       "violationsPerActiveDay": 0.214,
       "daysSinceLastSeen": 10,
       "escalationScore": 68.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******89",
@@ -163,7 +193,9 @@
       "violationsPerActiveDay": 12.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 66.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******37",
@@ -174,7 +206,9 @@
       "violationsPerActiveDay": 0.333,
       "daysSinceLastSeen": 2,
       "escalationScore": 66.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****75",
@@ -185,7 +219,9 @@
       "violationsPerActiveDay": 0.242,
       "daysSinceLastSeen": 24,
       "escalationScore": 65.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****61",
@@ -196,7 +232,9 @@
       "violationsPerActiveDay": 0.205,
       "daysSinceLastSeen": 14,
       "escalationScore": 65.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******80",
@@ -207,7 +245,9 @@
       "violationsPerActiveDay": 0.175,
       "daysSinceLastSeen": 2,
       "escalationScore": 65.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******92",
@@ -218,7 +258,9 @@
       "violationsPerActiveDay": 0.343,
       "daysSinceLastSeen": 45,
       "escalationScore": 64.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****20",
@@ -229,7 +271,9 @@
       "violationsPerActiveDay": 0.2,
       "daysSinceLastSeen": 15,
       "escalationScore": 63.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****75",
@@ -240,7 +284,9 @@
       "violationsPerActiveDay": 0.189,
       "daysSinceLastSeen": 2,
       "escalationScore": 63.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****64",
@@ -251,7 +297,9 @@
       "violationsPerActiveDay": 0.204,
       "daysSinceLastSeen": 7,
       "escalationScore": 62.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******29",
@@ -262,7 +310,9 @@
       "violationsPerActiveDay": 12.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 62.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******46",
@@ -273,7 +323,9 @@
       "violationsPerActiveDay": 12.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 62.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******62",
@@ -284,7 +336,9 @@
       "violationsPerActiveDay": 12.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 62.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****52",
@@ -295,7 +349,9 @@
       "violationsPerActiveDay": 0.207,
       "daysSinceLastSeen": 9,
       "escalationScore": 61.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******80",
@@ -306,7 +362,9 @@
       "violationsPerActiveDay": 11.0,
       "daysSinceLastSeen": 19,
       "escalationScore": 61.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******53",
@@ -317,7 +375,9 @@
       "violationsPerActiveDay": 0.188,
       "daysSinceLastSeen": 0,
       "escalationScore": 61.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******88",
@@ -328,7 +388,9 @@
       "violationsPerActiveDay": 0.324,
       "daysSinceLastSeen": 79,
       "escalationScore": 61.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****95",
@@ -339,7 +401,9 @@
       "violationsPerActiveDay": 0.171,
       "daysSinceLastSeen": 5,
       "escalationScore": 61.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****82",
@@ -350,7 +414,9 @@
       "violationsPerActiveDay": 0.211,
       "daysSinceLastSeen": 29,
       "escalationScore": 60.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******93",
@@ -361,7 +427,9 @@
       "violationsPerActiveDay": 11.0,
       "daysSinceLastSeen": 40,
       "escalationScore": 60.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****53",
@@ -372,7 +440,9 @@
       "violationsPerActiveDay": 0.153,
       "daysSinceLastSeen": 2,
       "escalationScore": 59.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******96",
@@ -383,7 +453,9 @@
       "violationsPerActiveDay": 11.0,
       "daysSinceLastSeen": 41,
       "escalationScore": 59.9,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******87",
@@ -394,7 +466,9 @@
       "violationsPerActiveDay": 0.174,
       "daysSinceLastSeen": 1,
       "escalationScore": 59.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******79",
@@ -405,7 +479,9 @@
       "violationsPerActiveDay": 0.145,
       "daysSinceLastSeen": 5,
       "escalationScore": 59.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******94",
@@ -416,7 +492,9 @@
       "violationsPerActiveDay": 0.152,
       "daysSinceLastSeen": 10,
       "escalationScore": 58.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****34",
@@ -427,7 +505,9 @@
       "violationsPerActiveDay": 0.173,
       "daysSinceLastSeen": 12,
       "escalationScore": 57.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****31",
@@ -438,7 +518,9 @@
       "violationsPerActiveDay": 11.0,
       "daysSinceLastSeen": 65,
       "escalationScore": 57.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****43",
@@ -449,7 +531,9 @@
       "violationsPerActiveDay": 0.163,
       "daysSinceLastSeen": 1,
       "escalationScore": 57.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******20",
@@ -460,7 +544,9 @@
       "violationsPerActiveDay": 0.18,
       "daysSinceLastSeen": 21,
       "escalationScore": 57.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****06",
@@ -471,7 +557,9 @@
       "violationsPerActiveDay": 0.128,
       "daysSinceLastSeen": 1,
       "escalationScore": 57.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****16",
@@ -482,7 +570,9 @@
       "violationsPerActiveDay": 0.142,
       "daysSinceLastSeen": 1,
       "escalationScore": 57.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******24",
@@ -493,7 +583,9 @@
       "violationsPerActiveDay": 11.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 57.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****19",
@@ -504,7 +596,9 @@
       "violationsPerActiveDay": 0.148,
       "daysSinceLastSeen": 8,
       "escalationScore": 56.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******01",
@@ -515,7 +609,9 @@
       "violationsPerActiveDay": 0.413,
       "daysSinceLastSeen": 0,
       "escalationScore": 56.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******56",
@@ -526,7 +622,9 @@
       "violationsPerActiveDay": 0.277,
       "daysSinceLastSeen": 62,
       "escalationScore": 56.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******18",
@@ -537,7 +635,9 @@
       "violationsPerActiveDay": 0.289,
       "daysSinceLastSeen": 5,
       "escalationScore": 56.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****96",
@@ -548,7 +648,9 @@
       "violationsPerActiveDay": 0.12,
       "daysSinceLastSeen": 6,
       "escalationScore": 56.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****19",
@@ -559,7 +661,9 @@
       "violationsPerActiveDay": 0.296,
       "daysSinceLastSeen": 42,
       "escalationScore": 55.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******94",
@@ -570,7 +674,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 30,
       "escalationScore": 55.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****55",
@@ -581,7 +687,9 @@
       "violationsPerActiveDay": 0.167,
       "daysSinceLastSeen": 5,
       "escalationScore": 55.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******80",
@@ -592,7 +700,9 @@
       "violationsPerActiveDay": 0.411,
       "daysSinceLastSeen": 90,
       "escalationScore": 55.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****33",
@@ -603,7 +713,9 @@
       "violationsPerActiveDay": 0.165,
       "daysSinceLastSeen": 10,
       "escalationScore": 55.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******34",
@@ -614,7 +726,9 @@
       "violationsPerActiveDay": 0.129,
       "daysSinceLastSeen": 2,
       "escalationScore": 54.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******16",
@@ -625,7 +739,9 @@
       "violationsPerActiveDay": 11.0,
       "daysSinceLastSeen": 112,
       "escalationScore": 54.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******64",
@@ -636,7 +752,9 @@
       "violationsPerActiveDay": 10.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 54.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****43",
@@ -647,7 +765,9 @@
       "violationsPerActiveDay": 0.168,
       "daysSinceLastSeen": 8,
       "escalationScore": 54.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****80",
@@ -658,7 +778,9 @@
       "violationsPerActiveDay": 0.188,
       "daysSinceLastSeen": 34,
       "escalationScore": 54.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****60",
@@ -669,7 +791,9 @@
       "violationsPerActiveDay": 0.147,
       "daysSinceLastSeen": 2,
       "escalationScore": 53.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******20",
@@ -680,7 +804,9 @@
       "violationsPerActiveDay": 0.145,
       "daysSinceLastSeen": 2,
       "escalationScore": 53.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******02",
@@ -691,7 +817,9 @@
       "violationsPerActiveDay": 0.139,
       "daysSinceLastSeen": 0,
       "escalationScore": 53.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****98",
@@ -702,7 +830,9 @@
       "violationsPerActiveDay": 0.164,
       "daysSinceLastSeen": 19,
       "escalationScore": 53.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******75",
@@ -713,7 +843,9 @@
       "violationsPerActiveDay": 0.142,
       "daysSinceLastSeen": 2,
       "escalationScore": 53.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****52",
@@ -724,7 +856,9 @@
       "violationsPerActiveDay": 0.214,
       "daysSinceLastSeen": 5,
       "escalationScore": 53.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -735,7 +869,9 @@
       "violationsPerActiveDay": 0.124,
       "daysSinceLastSeen": 5,
       "escalationScore": 53.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****18",
@@ -746,7 +882,9 @@
       "violationsPerActiveDay": 0.26,
       "daysSinceLastSeen": 66,
       "escalationScore": 53.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****47",
@@ -757,7 +895,9 @@
       "violationsPerActiveDay": 0.094,
       "daysSinceLastSeen": 6,
       "escalationScore": 53.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****92",
@@ -768,7 +908,9 @@
       "violationsPerActiveDay": 0.207,
       "daysSinceLastSeen": 27,
       "escalationScore": 53.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****50",
@@ -779,7 +921,9 @@
       "violationsPerActiveDay": 0.167,
       "daysSinceLastSeen": 11,
       "escalationScore": 53.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****26",
@@ -790,7 +934,9 @@
       "violationsPerActiveDay": 0.242,
       "daysSinceLastSeen": 42,
       "escalationScore": 53.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******65",
@@ -801,7 +947,9 @@
       "violationsPerActiveDay": 10.0,
       "daysSinceLastSeen": 63,
       "escalationScore": 53.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******49",
@@ -812,7 +960,9 @@
       "violationsPerActiveDay": 0.192,
       "daysSinceLastSeen": 28,
       "escalationScore": 52.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******20",
@@ -823,7 +973,9 @@
       "violationsPerActiveDay": 0.159,
       "daysSinceLastSeen": 4,
       "escalationScore": 52.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****17",
@@ -834,7 +986,9 @@
       "violationsPerActiveDay": 0.181,
       "daysSinceLastSeen": 22,
       "escalationScore": 52.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****19",
@@ -845,7 +999,9 @@
       "violationsPerActiveDay": 0.08,
       "daysSinceLastSeen": 1,
       "escalationScore": 52.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****10",
@@ -856,7 +1012,9 @@
       "violationsPerActiveDay": 0.156,
       "daysSinceLastSeen": 4,
       "escalationScore": 52.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******06",
@@ -867,7 +1025,9 @@
       "violationsPerActiveDay": 0.18,
       "daysSinceLastSeen": 27,
       "escalationScore": 52.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******80",
@@ -878,7 +1038,9 @@
       "violationsPerActiveDay": 10.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 52.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******98",
@@ -889,7 +1051,9 @@
       "violationsPerActiveDay": 0.148,
       "daysSinceLastSeen": 16,
       "escalationScore": 52.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******28",
@@ -900,7 +1064,9 @@
       "violationsPerActiveDay": 10.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 52.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****46",
@@ -911,7 +1077,9 @@
       "violationsPerActiveDay": 0.238,
       "daysSinceLastSeen": 62,
       "escalationScore": 51.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****06",
@@ -922,7 +1090,9 @@
       "violationsPerActiveDay": 0.18,
       "daysSinceLastSeen": 0,
       "escalationScore": 51.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****35",
@@ -933,7 +1103,9 @@
       "violationsPerActiveDay": 0.233,
       "daysSinceLastSeen": 11,
       "escalationScore": 51.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******22",
@@ -944,7 +1116,9 @@
       "violationsPerActiveDay": 0.167,
       "daysSinceLastSeen": 11,
       "escalationScore": 51.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****80",
@@ -955,7 +1129,9 @@
       "violationsPerActiveDay": 0.117,
       "daysSinceLastSeen": 5,
       "escalationScore": 51.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****11",
@@ -966,7 +1142,9 @@
       "violationsPerActiveDay": 0.07,
       "daysSinceLastSeen": 24,
       "escalationScore": 51.6,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****98",
@@ -977,7 +1155,9 @@
       "violationsPerActiveDay": 0.179,
       "daysSinceLastSeen": 2,
       "escalationScore": 51.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******16",
@@ -988,7 +1168,9 @@
       "violationsPerActiveDay": 0.16,
       "daysSinceLastSeen": 2,
       "escalationScore": 51.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****41",
@@ -999,7 +1181,9 @@
       "violationsPerActiveDay": 0.325,
       "daysSinceLastSeen": 20,
       "escalationScore": 51.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****99",
@@ -1010,7 +1194,9 @@
       "violationsPerActiveDay": 0.142,
       "daysSinceLastSeen": 5,
       "escalationScore": 51.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****90",
@@ -1021,7 +1207,9 @@
       "violationsPerActiveDay": 0.221,
       "daysSinceLastSeen": 60,
       "escalationScore": 51.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****34",
@@ -1032,7 +1220,9 @@
       "violationsPerActiveDay": 0.175,
       "daysSinceLastSeen": 5,
       "escalationScore": 51.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******99",
@@ -1043,7 +1233,9 @@
       "violationsPerActiveDay": 0.244,
       "daysSinceLastSeen": 4,
       "escalationScore": 50.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******14",
@@ -1054,7 +1246,9 @@
       "violationsPerActiveDay": 0.079,
       "daysSinceLastSeen": 6,
       "escalationScore": 50.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****10",
@@ -1065,7 +1259,9 @@
       "violationsPerActiveDay": 0.183,
       "daysSinceLastSeen": 28,
       "escalationScore": 50.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****73",
@@ -1076,7 +1272,9 @@
       "violationsPerActiveDay": 0.133,
       "daysSinceLastSeen": 12,
       "escalationScore": 50.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******61",
@@ -1087,7 +1285,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 31,
       "escalationScore": 50.7,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -1098,7 +1298,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 33,
       "escalationScore": 50.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******32",
@@ -1109,7 +1311,9 @@
       "violationsPerActiveDay": 0.235,
       "daysSinceLastSeen": 50,
       "escalationScore": 50.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******94",
@@ -1120,7 +1324,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 30,
       "escalationScore": 50.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******72",
@@ -1131,7 +1337,9 @@
       "violationsPerActiveDay": 0.175,
       "daysSinceLastSeen": 29,
       "escalationScore": 49.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****60",
@@ -1142,7 +1350,9 @@
       "violationsPerActiveDay": 0.141,
       "daysSinceLastSeen": 7,
       "escalationScore": 49.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****93",
@@ -1153,7 +1363,9 @@
       "violationsPerActiveDay": 0.241,
       "daysSinceLastSeen": 66,
       "escalationScore": 49.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******74",
@@ -1164,7 +1376,9 @@
       "violationsPerActiveDay": 0.241,
       "daysSinceLastSeen": 10,
       "escalationScore": 49.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******61",
@@ -1175,7 +1389,9 @@
       "violationsPerActiveDay": 0.15,
       "daysSinceLastSeen": 7,
       "escalationScore": 49.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******19",
@@ -1186,7 +1402,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 49.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******58",
@@ -1197,7 +1415,9 @@
       "violationsPerActiveDay": 0.159,
       "daysSinceLastSeen": 9,
       "escalationScore": 49.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******68",
@@ -1208,7 +1428,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 49.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******72",
@@ -1219,7 +1441,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 49.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******73",
@@ -1230,7 +1454,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 46,
       "escalationScore": 49.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******70",
@@ -1241,7 +1467,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 46,
       "escalationScore": 49.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******76",
@@ -1252,7 +1480,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 46,
       "escalationScore": 49.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******82",
@@ -1263,7 +1493,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 46,
       "escalationScore": 49.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******86",
@@ -1274,7 +1506,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 46,
       "escalationScore": 49.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******54",
@@ -1285,7 +1519,9 @@
       "violationsPerActiveDay": 0.116,
       "daysSinceLastSeen": 34,
       "escalationScore": 49.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******17",
@@ -1296,7 +1532,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 49.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******55",
@@ -1307,7 +1545,9 @@
       "violationsPerActiveDay": 0.123,
       "daysSinceLastSeen": 7,
       "escalationScore": 49.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****63",
@@ -1318,7 +1558,9 @@
       "violationsPerActiveDay": 0.258,
       "daysSinceLastSeen": 17,
       "escalationScore": 48.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******62",
@@ -1329,7 +1571,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 54,
       "escalationScore": 48.7,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******14",
@@ -1340,7 +1584,9 @@
       "violationsPerActiveDay": 0.128,
       "daysSinceLastSeen": 2,
       "escalationScore": 48.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******30",
@@ -1351,7 +1597,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 4,
       "escalationScore": 48.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******50",
@@ -1362,7 +1610,9 @@
       "violationsPerActiveDay": 0.096,
       "daysSinceLastSeen": 2,
       "escalationScore": 48.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****17",
@@ -1373,7 +1623,9 @@
       "violationsPerActiveDay": 0.165,
       "daysSinceLastSeen": 45,
       "escalationScore": 48.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******72",
@@ -1384,7 +1636,9 @@
       "violationsPerActiveDay": 0.39,
       "daysSinceLastSeen": 80,
       "escalationScore": 48.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****03",
@@ -1395,7 +1649,9 @@
       "violationsPerActiveDay": 0.156,
       "daysSinceLastSeen": 3,
       "escalationScore": 48.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******99",
@@ -1406,7 +1662,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 62,
       "escalationScore": 48.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******39",
@@ -1417,7 +1675,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 61,
       "escalationScore": 47.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******53",
@@ -1428,7 +1688,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 61,
       "escalationScore": 47.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******04",
@@ -1439,7 +1701,9 @@
       "violationsPerActiveDay": 0.143,
       "daysSinceLastSeen": 16,
       "escalationScore": 47.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****45",
@@ -1450,7 +1714,9 @@
       "violationsPerActiveDay": 0.186,
       "daysSinceLastSeen": 13,
       "escalationScore": 47.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****72",
@@ -1461,7 +1727,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 65,
       "escalationScore": 47.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******28",
@@ -1472,7 +1740,9 @@
       "violationsPerActiveDay": 0.214,
       "daysSinceLastSeen": 47,
       "escalationScore": 47.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******35",
@@ -1483,7 +1753,9 @@
       "violationsPerActiveDay": 0.119,
       "daysSinceLastSeen": 3,
       "escalationScore": 47.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******37",
@@ -1494,7 +1766,9 @@
       "violationsPerActiveDay": 0.164,
       "daysSinceLastSeen": 1,
       "escalationScore": 47.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******09",
@@ -1505,7 +1779,9 @@
       "violationsPerActiveDay": 0.154,
       "daysSinceLastSeen": 6,
       "escalationScore": 47.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****86",
@@ -1516,7 +1792,9 @@
       "violationsPerActiveDay": 0.227,
       "daysSinceLastSeen": 4,
       "escalationScore": 47.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******29",
@@ -1527,7 +1805,9 @@
       "violationsPerActiveDay": 9.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 47.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******29",
@@ -1538,7 +1818,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 47.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******28",
@@ -1549,7 +1831,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 47.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******27",
@@ -1560,7 +1844,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 47.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******51",
@@ -1571,7 +1857,9 @@
       "violationsPerActiveDay": 0.151,
       "daysSinceLastSeen": 22,
       "escalationScore": 47.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****01",
@@ -1582,7 +1870,9 @@
       "violationsPerActiveDay": 0.122,
       "daysSinceLastSeen": 7,
       "escalationScore": 47.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******88",
@@ -1593,7 +1883,9 @@
       "violationsPerActiveDay": 0.114,
       "daysSinceLastSeen": 7,
       "escalationScore": 47.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******51",
@@ -1604,7 +1896,9 @@
       "violationsPerActiveDay": 0.158,
       "daysSinceLastSeen": 29,
       "escalationScore": 46.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******80",
@@ -1615,7 +1909,9 @@
       "violationsPerActiveDay": 0.179,
       "daysSinceLastSeen": 31,
       "escalationScore": 46.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****41",
@@ -1626,7 +1922,9 @@
       "violationsPerActiveDay": 0.159,
       "daysSinceLastSeen": 11,
       "escalationScore": 46.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****48",
@@ -1637,7 +1935,9 @@
       "violationsPerActiveDay": 0.161,
       "daysSinceLastSeen": 6,
       "escalationScore": 46.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******25",
@@ -1648,7 +1948,9 @@
       "violationsPerActiveDay": 0.108,
       "daysSinceLastSeen": 5,
       "escalationScore": 46.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****86",
@@ -1659,7 +1961,9 @@
       "violationsPerActiveDay": 0.07,
       "daysSinceLastSeen": 3,
       "escalationScore": 46.4,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******04",
@@ -1670,7 +1974,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 37,
       "escalationScore": 46.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****11",
@@ -1681,7 +1987,9 @@
       "violationsPerActiveDay": 0.115,
       "daysSinceLastSeen": 3,
       "escalationScore": 46.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****07",
@@ -1692,7 +2000,9 @@
       "violationsPerActiveDay": 0.297,
       "daysSinceLastSeen": 24,
       "escalationScore": 46.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******00",
@@ -1703,7 +2013,9 @@
       "violationsPerActiveDay": 0.069,
       "daysSinceLastSeen": 46,
       "escalationScore": 46.4,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****36",
@@ -1714,7 +2026,9 @@
       "violationsPerActiveDay": 0.184,
       "daysSinceLastSeen": 3,
       "escalationScore": 46.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******07",
@@ -1725,7 +2039,9 @@
       "violationsPerActiveDay": 0.118,
       "daysSinceLastSeen": 13,
       "escalationScore": 46.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******46",
@@ -1736,7 +2052,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 23,
       "escalationScore": 46.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****16",
@@ -1747,7 +2065,9 @@
       "violationsPerActiveDay": 0.11,
       "daysSinceLastSeen": 4,
       "escalationScore": 46.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******86",
@@ -1758,7 +2078,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 26,
       "escalationScore": 46.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****91",
@@ -1769,7 +2091,9 @@
       "violationsPerActiveDay": 0.157,
       "daysSinceLastSeen": 11,
       "escalationScore": 46.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******77",
@@ -1780,7 +2104,9 @@
       "violationsPerActiveDay": 0.116,
       "daysSinceLastSeen": 1,
       "escalationScore": 46.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******24",
@@ -1791,7 +2117,9 @@
       "violationsPerActiveDay": 0.138,
       "daysSinceLastSeen": 22,
       "escalationScore": 46.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****31",
@@ -1802,7 +2130,9 @@
       "violationsPerActiveDay": 0.147,
       "daysSinceLastSeen": 2,
       "escalationScore": 45.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******65",
@@ -1813,7 +2143,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 1,
       "escalationScore": 45.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****80",
@@ -1824,7 +2156,9 @@
       "violationsPerActiveDay": 0.125,
       "daysSinceLastSeen": 10,
       "escalationScore": 45.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****88",
@@ -1835,7 +2169,9 @@
       "violationsPerActiveDay": 0.182,
       "daysSinceLastSeen": 58,
       "escalationScore": 45.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****62",
@@ -1846,7 +2182,9 @@
       "violationsPerActiveDay": 0.159,
       "daysSinceLastSeen": 10,
       "escalationScore": 45.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -1857,7 +2195,9 @@
       "violationsPerActiveDay": 0.238,
       "daysSinceLastSeen": 45,
       "escalationScore": 45.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******50",
@@ -1868,7 +2208,9 @@
       "violationsPerActiveDay": 0.165,
       "daysSinceLastSeen": 54,
       "escalationScore": 45.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******46",
@@ -1879,7 +2221,9 @@
       "violationsPerActiveDay": 0.237,
       "daysSinceLastSeen": 35,
       "escalationScore": 45.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******48",
@@ -1890,7 +2234,9 @@
       "violationsPerActiveDay": 0.149,
       "daysSinceLastSeen": 26,
       "escalationScore": 45.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****63",
@@ -1901,7 +2247,9 @@
       "violationsPerActiveDay": 0.281,
       "daysSinceLastSeen": 67,
       "escalationScore": 45.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****20",
@@ -1912,7 +2260,9 @@
       "violationsPerActiveDay": 0.257,
       "daysSinceLastSeen": 2,
       "escalationScore": 45.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******99",
@@ -1923,7 +2273,9 @@
       "violationsPerActiveDay": 0.123,
       "daysSinceLastSeen": 17,
       "escalationScore": 45.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******85",
@@ -1934,7 +2286,9 @@
       "violationsPerActiveDay": 0.07,
       "daysSinceLastSeen": 21,
       "escalationScore": 45.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******21",
@@ -1945,7 +2299,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 33,
       "escalationScore": 45.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****43",
@@ -1956,7 +2312,9 @@
       "violationsPerActiveDay": 1.438,
       "daysSinceLastSeen": 58,
       "escalationScore": 45.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****56",
@@ -1967,7 +2325,9 @@
       "violationsPerActiveDay": 0.144,
       "daysSinceLastSeen": 27,
       "escalationScore": 45.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******15",
@@ -1978,7 +2338,9 @@
       "violationsPerActiveDay": 0.117,
       "daysSinceLastSeen": 28,
       "escalationScore": 45.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******31",
@@ -1989,7 +2351,9 @@
       "violationsPerActiveDay": 0.104,
       "daysSinceLastSeen": 12,
       "escalationScore": 45.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****88",
@@ -2000,7 +2364,9 @@
       "violationsPerActiveDay": 0.25,
       "daysSinceLastSeen": 11,
       "escalationScore": 45.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******87",
@@ -2011,7 +2377,9 @@
       "violationsPerActiveDay": 4.667,
       "daysSinceLastSeen": 26,
       "escalationScore": 45.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****40",
@@ -2022,7 +2390,9 @@
       "violationsPerActiveDay": 0.097,
       "daysSinceLastSeen": 5,
       "escalationScore": 45.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******86",
@@ -2033,7 +2403,9 @@
       "violationsPerActiveDay": 0.141,
       "daysSinceLastSeen": 3,
       "escalationScore": 45.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******31",
@@ -2044,7 +2416,9 @@
       "violationsPerActiveDay": 0.25,
       "daysSinceLastSeen": 72,
       "escalationScore": 45.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****11",
@@ -2055,7 +2429,9 @@
       "violationsPerActiveDay": 0.136,
       "daysSinceLastSeen": 40,
       "escalationScore": 44.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****97",
@@ -2066,7 +2442,9 @@
       "violationsPerActiveDay": 0.116,
       "daysSinceLastSeen": 1,
       "escalationScore": 44.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******57",
@@ -2077,7 +2455,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 10,
       "escalationScore": 44.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******65",
@@ -2088,7 +2468,9 @@
       "violationsPerActiveDay": 0.15,
       "daysSinceLastSeen": 28,
       "escalationScore": 44.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******29",
@@ -2099,7 +2481,9 @@
       "violationsPerActiveDay": 0.21,
       "daysSinceLastSeen": 0,
       "escalationScore": 44.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******08",
@@ -2110,7 +2494,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 44.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******09",
@@ -2121,7 +2507,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 44.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******14",
@@ -2132,7 +2520,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 44.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******22",
@@ -2143,7 +2533,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 44.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******73",
@@ -2154,7 +2546,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 43,
       "escalationScore": 44.3,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******72",
@@ -2165,7 +2559,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 44,
       "escalationScore": 44.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******81",
@@ -2176,7 +2572,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 44.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******70",
@@ -2187,7 +2585,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 44,
       "escalationScore": 44.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******22",
@@ -2198,7 +2598,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 44.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******67",
@@ -2209,7 +2611,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 44,
       "escalationScore": 44.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******41",
@@ -2220,7 +2624,9 @@
       "violationsPerActiveDay": 0.076,
       "daysSinceLastSeen": 6,
       "escalationScore": 44.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******65",
@@ -2231,7 +2637,9 @@
       "violationsPerActiveDay": 0.061,
       "daysSinceLastSeen": 34,
       "escalationScore": 44.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******05",
@@ -2242,7 +2650,9 @@
       "violationsPerActiveDay": 0.254,
       "daysSinceLastSeen": 75,
       "escalationScore": 44.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******15",
@@ -2253,7 +2663,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 44.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******14",
@@ -2264,7 +2676,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 44.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******34",
@@ -2275,7 +2689,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 1,
       "escalationScore": 44.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******70",
@@ -2286,7 +2702,9 @@
       "violationsPerActiveDay": 0.127,
       "daysSinceLastSeen": 0,
       "escalationScore": 44.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******99",
@@ -2297,7 +2715,9 @@
       "violationsPerActiveDay": 0.109,
       "daysSinceLastSeen": 1,
       "escalationScore": 44.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******15",
@@ -2308,7 +2728,9 @@
       "violationsPerActiveDay": 0.112,
       "daysSinceLastSeen": 10,
       "escalationScore": 44.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******05",
@@ -2319,7 +2741,9 @@
       "violationsPerActiveDay": 0.238,
       "daysSinceLastSeen": 48,
       "escalationScore": 44.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******88",
@@ -2330,7 +2754,9 @@
       "violationsPerActiveDay": 0.171,
       "daysSinceLastSeen": 30,
       "escalationScore": 43.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****90",
@@ -2341,7 +2767,9 @@
       "violationsPerActiveDay": 0.091,
       "daysSinceLastSeen": 5,
       "escalationScore": 43.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******27",
@@ -2352,7 +2780,9 @@
       "violationsPerActiveDay": 0.117,
       "daysSinceLastSeen": 12,
       "escalationScore": 43.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******47",
@@ -2363,7 +2793,9 @@
       "violationsPerActiveDay": 0.11,
       "daysSinceLastSeen": 4,
       "escalationScore": 43.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******21",
@@ -2374,7 +2806,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 43.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****43",
@@ -2385,7 +2819,9 @@
       "violationsPerActiveDay": 0.065,
       "daysSinceLastSeen": 23,
       "escalationScore": 43.7,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****84",
@@ -2396,7 +2832,9 @@
       "violationsPerActiveDay": 0.11,
       "daysSinceLastSeen": 22,
       "escalationScore": 43.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******00",
@@ -2407,7 +2845,9 @@
       "violationsPerActiveDay": 0.11,
       "daysSinceLastSeen": 0,
       "escalationScore": 43.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******98",
@@ -2418,7 +2858,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 55,
       "escalationScore": 43.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******96",
@@ -2429,7 +2871,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 55,
       "escalationScore": 43.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******95",
@@ -2440,7 +2884,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 55,
       "escalationScore": 43.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******94",
@@ -2451,7 +2897,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 55,
       "escalationScore": 43.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******91",
@@ -2462,7 +2910,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 55,
       "escalationScore": 43.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****53",
@@ -2473,7 +2923,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 1,
       "escalationScore": 43.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****73",
@@ -2484,7 +2936,9 @@
       "violationsPerActiveDay": 0.114,
       "daysSinceLastSeen": 9,
       "escalationScore": 43.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****35",
@@ -2495,7 +2949,9 @@
       "violationsPerActiveDay": 0.095,
       "daysSinceLastSeen": 15,
       "escalationScore": 43.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****85",
@@ -2506,7 +2962,9 @@
       "violationsPerActiveDay": 0.102,
       "daysSinceLastSeen": 2,
       "escalationScore": 43.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****78",
@@ -2517,7 +2975,9 @@
       "violationsPerActiveDay": 0.174,
       "daysSinceLastSeen": 60,
       "escalationScore": 43.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****41",
@@ -2528,7 +2988,9 @@
       "violationsPerActiveDay": 0.173,
       "daysSinceLastSeen": 45,
       "escalationScore": 43.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******45",
@@ -2539,7 +3001,9 @@
       "violationsPerActiveDay": 0.121,
       "daysSinceLastSeen": 7,
       "escalationScore": 43.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******08",
@@ -2550,7 +3014,9 @@
       "violationsPerActiveDay": 0.073,
       "daysSinceLastSeen": 6,
       "escalationScore": 43.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******27",
@@ -2561,7 +3027,9 @@
       "violationsPerActiveDay": 0.119,
       "daysSinceLastSeen": 5,
       "escalationScore": 43.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******70",
@@ -2572,7 +3040,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 62,
       "escalationScore": 43.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****30",
@@ -2583,7 +3053,9 @@
       "violationsPerActiveDay": 0.15,
       "daysSinceLastSeen": 30,
       "escalationScore": 43.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****73",
@@ -2594,7 +3066,9 @@
       "violationsPerActiveDay": 0.077,
       "daysSinceLastSeen": 25,
       "escalationScore": 43.0,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****45",
@@ -2605,7 +3079,9 @@
       "violationsPerActiveDay": 0.138,
       "daysSinceLastSeen": 66,
       "escalationScore": 43.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******00",
@@ -2616,7 +3092,9 @@
       "violationsPerActiveDay": 0.059,
       "daysSinceLastSeen": 30,
       "escalationScore": 43.0,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -2627,7 +3105,9 @@
       "violationsPerActiveDay": 0.129,
       "daysSinceLastSeen": 16,
       "escalationScore": 43.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******00",
@@ -2638,7 +3118,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 63,
       "escalationScore": 42.9,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******86",
@@ -2649,7 +3131,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 61,
       "escalationScore": 42.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****15",
@@ -2660,7 +3144,9 @@
       "violationsPerActiveDay": 0.375,
       "daysSinceLastSeen": 9,
       "escalationScore": 42.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******93",
@@ -2671,7 +3157,9 @@
       "violationsPerActiveDay": 4.0,
       "daysSinceLastSeen": 82,
       "escalationScore": 42.7,
-      "tier": "Warning"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******42",
@@ -2682,7 +3170,9 @@
       "violationsPerActiveDay": 0.14,
       "daysSinceLastSeen": 4,
       "escalationScore": 42.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******63",
@@ -2693,7 +3183,9 @@
       "violationsPerActiveDay": 0.045,
       "daysSinceLastSeen": 29,
       "escalationScore": 42.7,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******86",
@@ -2704,7 +3196,9 @@
       "violationsPerActiveDay": 0.138,
       "daysSinceLastSeen": 5,
       "escalationScore": 42.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******41",
@@ -2715,7 +3209,9 @@
       "violationsPerActiveDay": 0.102,
       "daysSinceLastSeen": 2,
       "escalationScore": 42.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****35",
@@ -2726,7 +3222,9 @@
       "violationsPerActiveDay": 0.103,
       "daysSinceLastSeen": 32,
       "escalationScore": 42.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****54",
@@ -2737,7 +3235,9 @@
       "violationsPerActiveDay": 0.17,
       "daysSinceLastSeen": 2,
       "escalationScore": 42.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******28",
@@ -2748,7 +3248,9 @@
       "violationsPerActiveDay": 0.512,
       "daysSinceLastSeen": 17,
       "escalationScore": 42.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******99",
@@ -2759,7 +3261,9 @@
       "violationsPerActiveDay": 0.197,
       "daysSinceLastSeen": 70,
       "escalationScore": 42.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -2770,7 +3274,9 @@
       "violationsPerActiveDay": 0.457,
       "daysSinceLastSeen": 16,
       "escalationScore": 42.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****31",
@@ -2781,7 +3287,9 @@
       "violationsPerActiveDay": 0.174,
       "daysSinceLastSeen": 58,
       "escalationScore": 42.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****12",
@@ -2792,7 +3300,9 @@
       "violationsPerActiveDay": 0.196,
       "daysSinceLastSeen": 1,
       "escalationScore": 42.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******54",
@@ -2803,7 +3313,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 42.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******27",
@@ -2814,7 +3326,9 @@
       "violationsPerActiveDay": 0.34,
       "daysSinceLastSeen": 96,
       "escalationScore": 42.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******98",
@@ -2825,7 +3339,9 @@
       "violationsPerActiveDay": 0.114,
       "daysSinceLastSeen": 10,
       "escalationScore": 42.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******02",
@@ -2836,7 +3352,9 @@
       "violationsPerActiveDay": 0.103,
       "daysSinceLastSeen": 23,
       "escalationScore": 42.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****89",
@@ -2847,7 +3365,9 @@
       "violationsPerActiveDay": 0.189,
       "daysSinceLastSeen": 24,
       "escalationScore": 41.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******20",
@@ -2858,7 +3378,9 @@
       "violationsPerActiveDay": 0.182,
       "daysSinceLastSeen": 62,
       "escalationScore": 41.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******14",
@@ -2869,7 +3391,9 @@
       "violationsPerActiveDay": 0.092,
       "daysSinceLastSeen": 12,
       "escalationScore": 41.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******47",
@@ -2880,7 +3404,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 14,
       "escalationScore": 41.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****43",
@@ -2891,7 +3417,9 @@
       "violationsPerActiveDay": 0.168,
       "daysSinceLastSeen": 17,
       "escalationScore": 41.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******67",
@@ -2902,7 +3430,9 @@
       "violationsPerActiveDay": 0.244,
       "daysSinceLastSeen": 8,
       "escalationScore": 41.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******91",
@@ -2913,7 +3443,9 @@
       "violationsPerActiveDay": 0.05,
       "daysSinceLastSeen": 6,
       "escalationScore": 41.8,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******07",
@@ -2924,7 +3456,9 @@
       "violationsPerActiveDay": 0.115,
       "daysSinceLastSeen": 13,
       "escalationScore": 41.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******75",
@@ -2935,7 +3469,9 @@
       "violationsPerActiveDay": 0.065,
       "daysSinceLastSeen": 11,
       "escalationScore": 41.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******89",
@@ -2946,7 +3482,9 @@
       "violationsPerActiveDay": 0.101,
       "daysSinceLastSeen": 4,
       "escalationScore": 41.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******59",
@@ -2957,7 +3495,9 @@
       "violationsPerActiveDay": 0.109,
       "daysSinceLastSeen": 9,
       "escalationScore": 41.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******78",
@@ -2968,7 +3508,9 @@
       "violationsPerActiveDay": 0.13,
       "daysSinceLastSeen": 36,
       "escalationScore": 41.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****59",
@@ -2979,7 +3521,9 @@
       "violationsPerActiveDay": 0.118,
       "daysSinceLastSeen": 4,
       "escalationScore": 41.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******22",
@@ -2990,7 +3534,9 @@
       "violationsPerActiveDay": 0.092,
       "daysSinceLastSeen": 4,
       "escalationScore": 41.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******49",
@@ -3001,7 +3547,9 @@
       "violationsPerActiveDay": 5.0,
       "daysSinceLastSeen": 1,
       "escalationScore": 41.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******96",
@@ -3012,7 +3560,9 @@
       "violationsPerActiveDay": 0.099,
       "daysSinceLastSeen": 22,
       "escalationScore": 41.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******48",
@@ -3023,7 +3573,9 @@
       "violationsPerActiveDay": 0.094,
       "daysSinceLastSeen": 12,
       "escalationScore": 41.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******58",
@@ -3034,7 +3586,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 9,
       "escalationScore": 41.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******82",
@@ -3045,7 +3599,9 @@
       "violationsPerActiveDay": 0.083,
       "daysSinceLastSeen": 3,
       "escalationScore": 41.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******05",
@@ -3056,7 +3612,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 25,
       "escalationScore": 41.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****30",
@@ -3067,7 +3625,9 @@
       "violationsPerActiveDay": 0.098,
       "daysSinceLastSeen": 10,
       "escalationScore": 41.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******22",
@@ -3078,7 +3638,9 @@
       "violationsPerActiveDay": 0.057,
       "daysSinceLastSeen": 18,
       "escalationScore": 41.2,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******67",
@@ -3089,7 +3651,9 @@
       "violationsPerActiveDay": 0.08,
       "daysSinceLastSeen": 18,
       "escalationScore": 41.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******17",
@@ -3100,7 +3664,9 @@
       "violationsPerActiveDay": 0.171,
       "daysSinceLastSeen": 67,
       "escalationScore": 41.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******25",
@@ -3111,7 +3677,9 @@
       "violationsPerActiveDay": 0.058,
       "daysSinceLastSeen": 4,
       "escalationScore": 41.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******37",
@@ -3122,7 +3690,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 27,
       "escalationScore": 41.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******72",
@@ -3133,7 +3703,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 23,
       "escalationScore": 41.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******79",
@@ -3144,7 +3716,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 23,
       "escalationScore": 41.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******43",
@@ -3155,7 +3729,9 @@
       "violationsPerActiveDay": 0.08,
       "daysSinceLastSeen": 2,
       "escalationScore": 40.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******02",
@@ -3166,7 +3742,9 @@
       "violationsPerActiveDay": 0.096,
       "daysSinceLastSeen": 3,
       "escalationScore": 40.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****61",
@@ -3177,7 +3755,9 @@
       "violationsPerActiveDay": 0.128,
       "daysSinceLastSeen": 1,
       "escalationScore": 40.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****34",
@@ -3188,7 +3768,9 @@
       "violationsPerActiveDay": 0.392,
       "daysSinceLastSeen": 93,
       "escalationScore": 40.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****21",
@@ -3199,7 +3781,9 @@
       "violationsPerActiveDay": 2.5,
       "daysSinceLastSeen": 4,
       "escalationScore": 40.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******15",
@@ -3210,7 +3794,9 @@
       "violationsPerActiveDay": 0.097,
       "daysSinceLastSeen": 2,
       "escalationScore": 40.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****32",
@@ -3221,7 +3807,9 @@
       "violationsPerActiveDay": 0.204,
       "daysSinceLastSeen": 24,
       "escalationScore": 40.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******39",
@@ -3232,7 +3820,9 @@
       "violationsPerActiveDay": 8.0,
       "daysSinceLastSeen": 144,
       "escalationScore": 40.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******45",
@@ -3243,7 +3833,9 @@
       "violationsPerActiveDay": 0.37,
       "daysSinceLastSeen": 100,
       "escalationScore": 40.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.896
     },
     {
       "vehicleMasked": "FKN0*****35",
@@ -3254,7 +3846,9 @@
       "violationsPerActiveDay": 0.148,
       "daysSinceLastSeen": 11,
       "escalationScore": 40.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****89",
@@ -3265,7 +3859,9 @@
       "violationsPerActiveDay": 0.162,
       "daysSinceLastSeen": 66,
       "escalationScore": 40.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******96",
@@ -3276,7 +3872,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 34,
       "escalationScore": 40.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******96",
@@ -3287,7 +3885,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 30,
       "escalationScore": 40.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******31",
@@ -3298,7 +3898,9 @@
       "violationsPerActiveDay": 0.112,
       "daysSinceLastSeen": 2,
       "escalationScore": 40.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******61",
@@ -3309,7 +3911,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 31,
       "escalationScore": 40.3,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****64",
@@ -3320,7 +3924,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 4,
       "escalationScore": 40.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******36",
@@ -3331,7 +3937,9 @@
       "violationsPerActiveDay": 0.144,
       "daysSinceLastSeen": 32,
       "escalationScore": 40.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******72",
@@ -3342,7 +3950,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 31,
       "escalationScore": 40.3,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****65",
@@ -3353,7 +3963,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 24,
       "escalationScore": 40.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******33",
@@ -3364,7 +3976,9 @@
       "violationsPerActiveDay": 0.073,
       "daysSinceLastSeen": 9,
       "escalationScore": 40.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****15",
@@ -3375,7 +3989,9 @@
       "violationsPerActiveDay": 0.134,
       "daysSinceLastSeen": 11,
       "escalationScore": 40.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****15",
@@ -3386,7 +4002,9 @@
       "violationsPerActiveDay": 0.244,
       "daysSinceLastSeen": 1,
       "escalationScore": 40.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******07",
@@ -3397,7 +4015,9 @@
       "violationsPerActiveDay": 0.103,
       "daysSinceLastSeen": 79,
       "escalationScore": 40.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******95",
@@ -3408,7 +4028,9 @@
       "violationsPerActiveDay": 0.117,
       "daysSinceLastSeen": 4,
       "escalationScore": 40.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******95",
@@ -3419,7 +4041,9 @@
       "violationsPerActiveDay": 0.142,
       "daysSinceLastSeen": 42,
       "escalationScore": 40.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******90",
@@ -3430,7 +4054,9 @@
       "violationsPerActiveDay": 0.136,
       "daysSinceLastSeen": 28,
       "escalationScore": 40.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****70",
@@ -3441,7 +4067,9 @@
       "violationsPerActiveDay": 0.103,
       "daysSinceLastSeen": 2,
       "escalationScore": 40.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******25",
@@ -3452,7 +4080,9 @@
       "violationsPerActiveDay": 0.042,
       "daysSinceLastSeen": 14,
       "escalationScore": 40.0,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******03",
@@ -3463,7 +4093,9 @@
       "violationsPerActiveDay": 0.076,
       "daysSinceLastSeen": 1,
       "escalationScore": 39.9,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******86",
@@ -3474,7 +4106,9 @@
       "violationsPerActiveDay": 0.178,
       "daysSinceLastSeen": 9,
       "escalationScore": 39.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******55",
@@ -3485,7 +4119,9 @@
       "violationsPerActiveDay": 0.08,
       "daysSinceLastSeen": 32,
       "escalationScore": 39.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****91",
@@ -3496,7 +4132,9 @@
       "violationsPerActiveDay": 0.141,
       "daysSinceLastSeen": 53,
       "escalationScore": 39.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****34",
@@ -3507,7 +4145,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 4,
       "escalationScore": 39.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******74",
@@ -3518,7 +4158,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 41,
       "escalationScore": 39.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******33",
@@ -3529,7 +4171,9 @@
       "violationsPerActiveDay": 0.196,
       "daysSinceLastSeen": 75,
       "escalationScore": 39.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.983
     },
     {
       "vehicleMasked": "FKN0******81",
@@ -3540,7 +4184,9 @@
       "violationsPerActiveDay": 0.145,
       "daysSinceLastSeen": 9,
       "escalationScore": 39.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******75",
@@ -3551,7 +4197,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 41,
       "escalationScore": 39.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****99",
@@ -3562,7 +4210,9 @@
       "violationsPerActiveDay": 0.115,
       "daysSinceLastSeen": 1,
       "escalationScore": 39.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******76",
@@ -3573,7 +4223,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 41,
       "escalationScore": 39.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******51",
@@ -3584,7 +4236,9 @@
       "violationsPerActiveDay": 0.116,
       "daysSinceLastSeen": 37,
       "escalationScore": 39.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****75",
@@ -3595,7 +4249,9 @@
       "violationsPerActiveDay": 0.07,
       "daysSinceLastSeen": 7,
       "escalationScore": 39.7,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******92",
@@ -3606,7 +4262,9 @@
       "violationsPerActiveDay": 0.116,
       "daysSinceLastSeen": 22,
       "escalationScore": 39.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****95",
@@ -3617,7 +4275,9 @@
       "violationsPerActiveDay": 0.157,
       "daysSinceLastSeen": 65,
       "escalationScore": 39.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****90",
@@ -3628,7 +4288,9 @@
       "violationsPerActiveDay": 0.057,
       "daysSinceLastSeen": 8,
       "escalationScore": 39.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****54",
@@ -3639,7 +4301,9 @@
       "violationsPerActiveDay": 0.247,
       "daysSinceLastSeen": 21,
       "escalationScore": 39.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******47",
@@ -3650,7 +4314,9 @@
       "violationsPerActiveDay": 0.112,
       "daysSinceLastSeen": 27,
       "escalationScore": 39.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****07",
@@ -3661,7 +4327,9 @@
       "violationsPerActiveDay": 0.198,
       "daysSinceLastSeen": 41,
       "escalationScore": 39.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -3672,7 +4340,9 @@
       "violationsPerActiveDay": 0.131,
       "daysSinceLastSeen": 47,
       "escalationScore": 39.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******24",
@@ -3683,7 +4353,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 45,
       "escalationScore": 39.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****80",
@@ -3694,7 +4366,9 @@
       "violationsPerActiveDay": 0.241,
       "daysSinceLastSeen": 11,
       "escalationScore": 39.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******68",
@@ -3705,7 +4379,9 @@
       "violationsPerActiveDay": 0.038,
       "daysSinceLastSeen": 20,
       "escalationScore": 39.4,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******85",
@@ -3716,7 +4392,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 42,
       "escalationScore": 39.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******84",
@@ -3727,7 +4405,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 42,
       "escalationScore": 39.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****17",
@@ -3738,7 +4418,9 @@
       "violationsPerActiveDay": 0.11,
       "daysSinceLastSeen": 10,
       "escalationScore": 39.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****84",
@@ -3749,7 +4431,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 9,
       "escalationScore": 39.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******15",
@@ -3760,7 +4444,9 @@
       "violationsPerActiveDay": 0.083,
       "daysSinceLastSeen": 25,
       "escalationScore": 39.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****87",
@@ -3771,7 +4457,9 @@
       "violationsPerActiveDay": 0.104,
       "daysSinceLastSeen": 2,
       "escalationScore": 39.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******92",
@@ -3782,7 +4470,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 46,
       "escalationScore": 39.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******61",
@@ -3793,7 +4483,9 @@
       "violationsPerActiveDay": 0.154,
       "daysSinceLastSeen": 17,
       "escalationScore": 39.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****75",
@@ -3804,7 +4496,9 @@
       "violationsPerActiveDay": 0.195,
       "daysSinceLastSeen": 66,
       "escalationScore": 39.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******79",
@@ -3815,7 +4509,9 @@
       "violationsPerActiveDay": 0.089,
       "daysSinceLastSeen": 21,
       "escalationScore": 39.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****61",
@@ -3826,7 +4522,9 @@
       "violationsPerActiveDay": 0.094,
       "daysSinceLastSeen": 4,
       "escalationScore": 39.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******77",
@@ -3837,7 +4535,9 @@
       "violationsPerActiveDay": 0.047,
       "daysSinceLastSeen": 2,
       "escalationScore": 39.3,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******84",
@@ -3848,7 +4548,9 @@
       "violationsPerActiveDay": 0.134,
       "daysSinceLastSeen": 18,
       "escalationScore": 39.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******75",
@@ -3859,7 +4561,9 @@
       "violationsPerActiveDay": 0.173,
       "daysSinceLastSeen": 93,
       "escalationScore": 39.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.999
     },
     {
       "vehicleMasked": "FKN0*****37",
@@ -3870,7 +4574,9 @@
       "violationsPerActiveDay": 0.11,
       "daysSinceLastSeen": 11,
       "escalationScore": 39.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******35",
@@ -3881,7 +4587,9 @@
       "violationsPerActiveDay": 0.519,
       "daysSinceLastSeen": 105,
       "escalationScore": 39.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****95",
@@ -3892,7 +4600,9 @@
       "violationsPerActiveDay": 0.195,
       "daysSinceLastSeen": 2,
       "escalationScore": 39.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******60",
@@ -3903,7 +4613,9 @@
       "violationsPerActiveDay": 0.059,
       "daysSinceLastSeen": 25,
       "escalationScore": 39.2,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****49",
@@ -3914,7 +4626,9 @@
       "violationsPerActiveDay": 0.486,
       "daysSinceLastSeen": 11,
       "escalationScore": 39.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******66",
@@ -3925,7 +4639,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 44,
       "escalationScore": 39.2,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******18",
@@ -3936,7 +4652,9 @@
       "violationsPerActiveDay": 0.25,
       "daysSinceLastSeen": 118,
       "escalationScore": 39.2,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 0.983
     },
     {
       "vehicleMasked": "FKN0*****32",
@@ -3947,7 +4665,9 @@
       "violationsPerActiveDay": 0.229,
       "daysSinceLastSeen": 61,
       "escalationScore": 39.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******09",
@@ -3958,7 +4678,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 39.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******79",
@@ -3969,7 +4691,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 39.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******03",
@@ -3980,7 +4704,9 @@
       "violationsPerActiveDay": 0.097,
       "daysSinceLastSeen": 16,
       "escalationScore": 39.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****60",
@@ -3991,7 +4717,9 @@
       "violationsPerActiveDay": 0.092,
       "daysSinceLastSeen": 6,
       "escalationScore": 39.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******16",
@@ -4002,7 +4730,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 39.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******66",
@@ -4013,7 +4743,9 @@
       "violationsPerActiveDay": 0.098,
       "daysSinceLastSeen": 34,
       "escalationScore": 39.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******40",
@@ -4024,7 +4756,9 @@
       "violationsPerActiveDay": 0.138,
       "daysSinceLastSeen": 58,
       "escalationScore": 39.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****06",
@@ -4035,7 +4769,9 @@
       "violationsPerActiveDay": 0.087,
       "daysSinceLastSeen": 11,
       "escalationScore": 39.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******90",
@@ -4046,7 +4782,9 @@
       "violationsPerActiveDay": 0.055,
       "daysSinceLastSeen": 5,
       "escalationScore": 39.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****11",
@@ -4057,7 +4795,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 67,
       "escalationScore": 39.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****45",
@@ -4068,7 +4808,9 @@
       "violationsPerActiveDay": 0.079,
       "daysSinceLastSeen": 4,
       "escalationScore": 39.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******28",
@@ -4079,7 +4821,9 @@
       "violationsPerActiveDay": 0.126,
       "daysSinceLastSeen": 35,
       "escalationScore": 39.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****30",
@@ -4090,7 +4834,9 @@
       "violationsPerActiveDay": 0.123,
       "daysSinceLastSeen": 16,
       "escalationScore": 38.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****15",
@@ -4101,7 +4847,9 @@
       "violationsPerActiveDay": 0.23,
       "daysSinceLastSeen": 82,
       "escalationScore": 38.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****11",
@@ -4112,7 +4860,9 @@
       "violationsPerActiveDay": 0.136,
       "daysSinceLastSeen": 17,
       "escalationScore": 38.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******24",
@@ -4123,7 +4873,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 49,
       "escalationScore": 38.8,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******75",
@@ -4134,7 +4886,9 @@
       "violationsPerActiveDay": 0.083,
       "daysSinceLastSeen": 16,
       "escalationScore": 38.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******87",
@@ -4145,7 +4899,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 54,
       "escalationScore": 38.7,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****02",
@@ -4156,7 +4912,9 @@
       "violationsPerActiveDay": 0.127,
       "daysSinceLastSeen": 11,
       "escalationScore": 38.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******28",
@@ -4167,7 +4925,9 @@
       "violationsPerActiveDay": 0.127,
       "daysSinceLastSeen": 48,
       "escalationScore": 38.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******79",
@@ -4178,7 +4938,9 @@
       "violationsPerActiveDay": 0.075,
       "daysSinceLastSeen": 15,
       "escalationScore": 38.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******09",
@@ -4189,7 +4951,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 54,
       "escalationScore": 38.7,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******10",
@@ -4200,7 +4964,9 @@
       "violationsPerActiveDay": 0.101,
       "daysSinceLastSeen": 1,
       "escalationScore": 38.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******41",
@@ -4211,7 +4977,9 @@
       "violationsPerActiveDay": 0.099,
       "daysSinceLastSeen": 1,
       "escalationScore": 38.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******27",
@@ -4222,7 +4990,9 @@
       "violationsPerActiveDay": 0.068,
       "daysSinceLastSeen": 7,
       "escalationScore": 38.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******62",
@@ -4233,7 +5003,9 @@
       "violationsPerActiveDay": 0.071,
       "daysSinceLastSeen": 43,
       "escalationScore": 38.6,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******90",
@@ -4244,7 +5016,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 55,
       "escalationScore": 38.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****07",
@@ -4255,7 +5029,9 @@
       "violationsPerActiveDay": 0.165,
       "daysSinceLastSeen": 60,
       "escalationScore": 38.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******03",
@@ -4266,7 +5042,9 @@
       "violationsPerActiveDay": 0.103,
       "daysSinceLastSeen": 62,
       "escalationScore": 38.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****90",
@@ -4277,7 +5055,9 @@
       "violationsPerActiveDay": 0.135,
       "daysSinceLastSeen": 6,
       "escalationScore": 38.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******77",
@@ -4288,7 +5068,9 @@
       "violationsPerActiveDay": 0.097,
       "daysSinceLastSeen": 4,
       "escalationScore": 38.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******67",
@@ -4299,7 +5081,9 @@
       "violationsPerActiveDay": 0.048,
       "daysSinceLastSeen": 6,
       "escalationScore": 38.3,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******31",
@@ -4310,7 +5094,9 @@
       "violationsPerActiveDay": 0.148,
       "daysSinceLastSeen": 24,
       "escalationScore": 38.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****81",
@@ -4321,7 +5107,9 @@
       "violationsPerActiveDay": 0.069,
       "daysSinceLastSeen": 13,
       "escalationScore": 38.2,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******73",
@@ -4332,7 +5120,9 @@
       "violationsPerActiveDay": 0.092,
       "daysSinceLastSeen": 8,
       "escalationScore": 38.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****69",
@@ -4343,7 +5133,9 @@
       "violationsPerActiveDay": 0.174,
       "daysSinceLastSeen": 3,
       "escalationScore": 38.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******68",
@@ -4354,7 +5146,9 @@
       "violationsPerActiveDay": 0.038,
       "daysSinceLastSeen": 13,
       "escalationScore": 38.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******63",
@@ -4365,7 +5159,9 @@
       "violationsPerActiveDay": 0.042,
       "daysSinceLastSeen": 5,
       "escalationScore": 38.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******18",
@@ -4376,7 +5172,9 @@
       "violationsPerActiveDay": 0.23,
       "daysSinceLastSeen": 62,
       "escalationScore": 38.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****34",
@@ -4387,7 +5185,9 @@
       "violationsPerActiveDay": 4.0,
       "daysSinceLastSeen": 24,
       "escalationScore": 38.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****53",
@@ -4398,7 +5198,9 @@
       "violationsPerActiveDay": 0.06,
       "daysSinceLastSeen": 8,
       "escalationScore": 38.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******82",
@@ -4409,7 +5211,9 @@
       "violationsPerActiveDay": 0.098,
       "daysSinceLastSeen": 10,
       "escalationScore": 38.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******10",
@@ -4420,7 +5224,9 @@
       "violationsPerActiveDay": 0.073,
       "daysSinceLastSeen": 64,
       "escalationScore": 38.0,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******74",
@@ -4431,7 +5237,9 @@
       "violationsPerActiveDay": 0.049,
       "daysSinceLastSeen": 1,
       "escalationScore": 38.0,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****64",
@@ -4442,7 +5250,9 @@
       "violationsPerActiveDay": 0.074,
       "daysSinceLastSeen": 2,
       "escalationScore": 38.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******24",
@@ -4453,7 +5263,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 62,
       "escalationScore": 38.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******16",
@@ -4464,7 +5276,9 @@
       "violationsPerActiveDay": 0.033,
       "daysSinceLastSeen": 7,
       "escalationScore": 37.9,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******42",
@@ -4475,7 +5289,9 @@
       "violationsPerActiveDay": 0.277,
       "daysSinceLastSeen": 81,
       "escalationScore": 37.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.971
     },
     {
       "vehicleMasked": "FKN0******22",
@@ -4486,7 +5302,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 32,
       "escalationScore": 37.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******68",
@@ -4497,7 +5315,9 @@
       "violationsPerActiveDay": 0.18,
       "daysSinceLastSeen": 45,
       "escalationScore": 37.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******83",
@@ -4508,7 +5328,9 @@
       "violationsPerActiveDay": 0.108,
       "daysSinceLastSeen": 29,
       "escalationScore": 37.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******53",
@@ -4519,7 +5341,9 @@
       "violationsPerActiveDay": 0.083,
       "daysSinceLastSeen": 4,
       "escalationScore": 37.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******56",
@@ -4530,7 +5354,9 @@
       "violationsPerActiveDay": 0.069,
       "daysSinceLastSeen": 14,
       "escalationScore": 37.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******34",
@@ -4541,7 +5367,9 @@
       "violationsPerActiveDay": 0.029,
       "daysSinceLastSeen": 9,
       "escalationScore": 37.8,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******74",
@@ -4552,7 +5380,9 @@
       "violationsPerActiveDay": 0.119,
       "daysSinceLastSeen": 20,
       "escalationScore": 37.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******18",
@@ -4563,7 +5393,9 @@
       "violationsPerActiveDay": 0.102,
       "daysSinceLastSeen": 22,
       "escalationScore": 37.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******53",
@@ -4574,7 +5406,9 @@
       "violationsPerActiveDay": 0.12,
       "daysSinceLastSeen": 12,
       "escalationScore": 37.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****34",
@@ -4585,7 +5419,9 @@
       "violationsPerActiveDay": 0.105,
       "daysSinceLastSeen": 12,
       "escalationScore": 37.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******91",
@@ -4596,7 +5432,9 @@
       "violationsPerActiveDay": 0.158,
       "daysSinceLastSeen": 15,
       "escalationScore": 37.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****97",
@@ -4607,7 +5445,9 @@
       "violationsPerActiveDay": 0.117,
       "daysSinceLastSeen": 32,
       "escalationScore": 37.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******88",
@@ -4618,7 +5458,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 62,
       "escalationScore": 37.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******86",
@@ -4629,7 +5471,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 62,
       "escalationScore": 37.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****87",
@@ -4640,7 +5484,9 @@
       "violationsPerActiveDay": 0.064,
       "daysSinceLastSeen": 65,
       "escalationScore": 37.6,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******89",
@@ -4651,7 +5497,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 62,
       "escalationScore": 37.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******85",
@@ -4662,7 +5510,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 62,
       "escalationScore": 37.6,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******43",
@@ -4673,7 +5523,9 @@
       "violationsPerActiveDay": 0.265,
       "daysSinceLastSeen": 94,
       "escalationScore": 37.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.998
     },
     {
       "vehicleMasked": "FKN0*****54",
@@ -4684,7 +5536,9 @@
       "violationsPerActiveDay": 0.143,
       "daysSinceLastSeen": 34,
       "escalationScore": 37.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******75",
@@ -4695,7 +5549,9 @@
       "violationsPerActiveDay": 0.101,
       "daysSinceLastSeen": 0,
       "escalationScore": 37.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****08",
@@ -4706,7 +5562,9 @@
       "violationsPerActiveDay": 0.085,
       "daysSinceLastSeen": 1,
       "escalationScore": 37.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****52",
@@ -4717,7 +5575,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 29,
       "escalationScore": 37.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******81",
@@ -4728,7 +5588,9 @@
       "violationsPerActiveDay": 0.085,
       "daysSinceLastSeen": 1,
       "escalationScore": 37.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****32",
@@ -4739,7 +5601,9 @@
       "violationsPerActiveDay": 0.176,
       "daysSinceLastSeen": 25,
       "escalationScore": 37.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****20",
@@ -4750,7 +5614,9 @@
       "violationsPerActiveDay": 0.162,
       "daysSinceLastSeen": 1,
       "escalationScore": 37.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****51",
@@ -4761,7 +5627,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 29,
       "escalationScore": 37.5,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******61",
@@ -4772,7 +5640,9 @@
       "violationsPerActiveDay": 0.179,
       "daysSinceLastSeen": 79,
       "escalationScore": 37.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******78",
@@ -4783,7 +5653,9 @@
       "violationsPerActiveDay": 4.5,
       "daysSinceLastSeen": 8,
       "escalationScore": 37.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****52",
@@ -4794,7 +5666,9 @@
       "violationsPerActiveDay": 0.321,
       "daysSinceLastSeen": 1,
       "escalationScore": 37.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.896
     },
     {
       "vehicleMasked": "FKN0*****61",
@@ -4805,7 +5679,9 @@
       "violationsPerActiveDay": 0.094,
       "daysSinceLastSeen": 22,
       "escalationScore": 37.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******16",
@@ -4816,7 +5692,9 @@
       "violationsPerActiveDay": 0.169,
       "daysSinceLastSeen": 78,
       "escalationScore": 37.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******79",
@@ -4827,7 +5705,9 @@
       "violationsPerActiveDay": 0.104,
       "daysSinceLastSeen": 80,
       "escalationScore": 37.4,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****67",
@@ -4838,7 +5718,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 65,
       "escalationScore": 37.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******13",
@@ -4849,7 +5731,9 @@
       "violationsPerActiveDay": 0.106,
       "daysSinceLastSeen": 92,
       "escalationScore": 37.4,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.999
     },
     {
       "vehicleMasked": "FKN0*****61",
@@ -4860,7 +5744,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 65,
       "escalationScore": 37.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****63",
@@ -4871,7 +5757,9 @@
       "violationsPerActiveDay": 6.0,
       "daysSinceLastSeen": 65,
       "escalationScore": 37.4,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****23",
@@ -4882,7 +5770,9 @@
       "violationsPerActiveDay": 0.432,
       "daysSinceLastSeen": 61,
       "escalationScore": 37.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 3,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******27",
@@ -4893,7 +5783,9 @@
       "violationsPerActiveDay": 0.077,
       "daysSinceLastSeen": 2,
       "escalationScore": 37.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******02",
@@ -4904,7 +5796,9 @@
       "violationsPerActiveDay": 0.118,
       "daysSinceLastSeen": 43,
       "escalationScore": 37.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****73",
@@ -4915,7 +5809,9 @@
       "violationsPerActiveDay": 0.074,
       "daysSinceLastSeen": 8,
       "escalationScore": 37.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******78",
@@ -4926,7 +5822,9 @@
       "violationsPerActiveDay": 0.169,
       "daysSinceLastSeen": 66,
       "escalationScore": 37.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****13",
@@ -4937,7 +5835,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 10,
       "escalationScore": 37.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******93",
@@ -4948,7 +5848,9 @@
       "violationsPerActiveDay": 0.061,
       "daysSinceLastSeen": 7,
       "escalationScore": 37.3,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******52",
@@ -4959,7 +5861,9 @@
       "violationsPerActiveDay": 0.054,
       "daysSinceLastSeen": 9,
       "escalationScore": 37.3,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******42",
@@ -4970,7 +5874,9 @@
       "violationsPerActiveDay": 0.08,
       "daysSinceLastSeen": 43,
       "escalationScore": 37.3,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******87",
@@ -4981,7 +5887,9 @@
       "violationsPerActiveDay": 0.101,
       "daysSinceLastSeen": 35,
       "escalationScore": 37.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******36",
@@ -4992,7 +5900,9 @@
       "violationsPerActiveDay": 0.118,
       "daysSinceLastSeen": 20,
       "escalationScore": 37.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****83",
@@ -5003,7 +5913,9 @@
       "violationsPerActiveDay": 0.141,
       "daysSinceLastSeen": 26,
       "escalationScore": 37.2,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******13",
@@ -5014,7 +5926,9 @@
       "violationsPerActiveDay": 0.039,
       "daysSinceLastSeen": 16,
       "escalationScore": 37.2,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****80",
@@ -5025,7 +5939,9 @@
       "violationsPerActiveDay": 0.098,
       "daysSinceLastSeen": 12,
       "escalationScore": 37.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****55",
@@ -5036,7 +5952,9 @@
       "violationsPerActiveDay": 0.053,
       "daysSinceLastSeen": 11,
       "escalationScore": 37.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******16",
@@ -5047,7 +5965,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 95,
       "escalationScore": 37.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.999
     },
     {
       "vehicleMasked": "FKN0*******53",
@@ -5058,7 +5978,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 37.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******52",
@@ -5069,7 +5991,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 126,
       "escalationScore": 37.1,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****04",
@@ -5080,7 +6004,9 @@
       "violationsPerActiveDay": 0.149,
       "daysSinceLastSeen": 37,
       "escalationScore": 37.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******49",
@@ -5091,7 +6017,9 @@
       "violationsPerActiveDay": 0.161,
       "daysSinceLastSeen": 53,
       "escalationScore": 37.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******29",
@@ -5102,7 +6030,9 @@
       "violationsPerActiveDay": 0.048,
       "daysSinceLastSeen": 25,
       "escalationScore": 37.1,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******36",
@@ -5113,7 +6043,9 @@
       "violationsPerActiveDay": 0.091,
       "daysSinceLastSeen": 3,
       "escalationScore": 37.1,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******30",
@@ -5124,7 +6056,9 @@
       "violationsPerActiveDay": 0.118,
       "daysSinceLastSeen": 29,
       "escalationScore": 37.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******57",
@@ -5135,7 +6069,9 @@
       "violationsPerActiveDay": 7.0,
       "daysSinceLastSeen": 127,
       "escalationScore": 37.0,
-      "tier": "Watch"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****43",
@@ -5146,7 +6082,9 @@
       "violationsPerActiveDay": 0.065,
       "daysSinceLastSeen": 11,
       "escalationScore": 37.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****66",
@@ -5157,7 +6095,9 @@
       "violationsPerActiveDay": 0.151,
       "daysSinceLastSeen": 60,
       "escalationScore": 37.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******85",
@@ -5168,7 +6108,9 @@
       "violationsPerActiveDay": 0.065,
       "daysSinceLastSeen": 72,
       "escalationScore": 37.0,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******09",
@@ -5179,7 +6121,9 @@
       "violationsPerActiveDay": 0.132,
       "daysSinceLastSeen": 60,
       "escalationScore": 37.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****28",
@@ -5190,7 +6134,9 @@
       "violationsPerActiveDay": 0.108,
       "daysSinceLastSeen": 36,
       "escalationScore": 37.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****03",
@@ -5201,7 +6147,9 @@
       "violationsPerActiveDay": 0.099,
       "daysSinceLastSeen": 27,
       "escalationScore": 37.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******63",
@@ -5212,7 +6160,9 @@
       "violationsPerActiveDay": 3.0,
       "daysSinceLastSeen": 118,
       "escalationScore": 37.0,
-      "tier": "Warning"
+      "tier": "Court-Referral",
+      "behaviourSegment": 0,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******10",
@@ -5223,7 +6173,9 @@
       "violationsPerActiveDay": 0.129,
       "daysSinceLastSeen": 14,
       "escalationScore": 37.0,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****97",
@@ -5234,7 +6186,9 @@
       "violationsPerActiveDay": 0.074,
       "daysSinceLastSeen": 25,
       "escalationScore": 36.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****26",
@@ -5245,7 +6199,9 @@
       "violationsPerActiveDay": 0.173,
       "daysSinceLastSeen": 20,
       "escalationScore": 36.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******12",
@@ -5256,7 +6212,9 @@
       "violationsPerActiveDay": 0.124,
       "daysSinceLastSeen": 2,
       "escalationScore": 36.9,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****92",
@@ -5267,7 +6225,9 @@
       "violationsPerActiveDay": 0.103,
       "daysSinceLastSeen": 15,
       "escalationScore": 36.9,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 0.999
     },
     {
       "vehicleMasked": "FKN0******94",
@@ -5278,7 +6238,9 @@
       "violationsPerActiveDay": 0.102,
       "daysSinceLastSeen": 1,
       "escalationScore": 36.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******94",
@@ -5289,7 +6251,9 @@
       "violationsPerActiveDay": 0.091,
       "daysSinceLastSeen": 75,
       "escalationScore": 36.8,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****94",
@@ -5300,7 +6264,9 @@
       "violationsPerActiveDay": 0.133,
       "daysSinceLastSeen": 62,
       "escalationScore": 36.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******04",
@@ -5311,7 +6277,9 @@
       "violationsPerActiveDay": 0.243,
       "daysSinceLastSeen": 58,
       "escalationScore": 36.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****23",
@@ -5322,7 +6290,9 @@
       "violationsPerActiveDay": 0.132,
       "daysSinceLastSeen": 24,
       "escalationScore": 36.8,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******74",
@@ -5333,7 +6303,9 @@
       "violationsPerActiveDay": 0.197,
       "daysSinceLastSeen": 21,
       "escalationScore": 36.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******32",
@@ -5344,7 +6316,9 @@
       "violationsPerActiveDay": 0.043,
       "daysSinceLastSeen": 29,
       "escalationScore": 36.7,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****49",
@@ -5355,7 +6329,9 @@
       "violationsPerActiveDay": 0.162,
       "daysSinceLastSeen": 29,
       "escalationScore": 36.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******89",
@@ -5366,7 +6342,9 @@
       "violationsPerActiveDay": 0.219,
       "daysSinceLastSeen": 85,
       "escalationScore": 36.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****90",
@@ -5377,7 +6355,9 @@
       "violationsPerActiveDay": 0.157,
       "daysSinceLastSeen": 19,
       "escalationScore": 36.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*******70",
@@ -5388,7 +6368,9 @@
       "violationsPerActiveDay": 0.177,
       "daysSinceLastSeen": 85,
       "escalationScore": 36.7,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******37",
@@ -5399,7 +6381,9 @@
       "violationsPerActiveDay": 0.103,
       "daysSinceLastSeen": 1,
       "escalationScore": 36.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******89",
@@ -5410,7 +6394,9 @@
       "violationsPerActiveDay": 0.137,
       "daysSinceLastSeen": 21,
       "escalationScore": 36.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******96",
@@ -5421,7 +6407,9 @@
       "violationsPerActiveDay": 0.152,
       "daysSinceLastSeen": 35,
       "escalationScore": 36.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0*****52",
@@ -5432,7 +6420,9 @@
       "violationsPerActiveDay": 0.112,
       "daysSinceLastSeen": 27,
       "escalationScore": 36.6,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******13",
@@ -5443,7 +6433,9 @@
       "violationsPerActiveDay": 0.063,
       "daysSinceLastSeen": 42,
       "escalationScore": 36.6,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******84",
@@ -5454,7 +6446,9 @@
       "violationsPerActiveDay": 0.107,
       "daysSinceLastSeen": 32,
       "escalationScore": 36.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******29",
@@ -5465,7 +6459,9 @@
       "violationsPerActiveDay": 0.071,
       "daysSinceLastSeen": 17,
       "escalationScore": 36.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******46",
@@ -5476,7 +6472,9 @@
       "violationsPerActiveDay": 0.115,
       "daysSinceLastSeen": 11,
       "escalationScore": 36.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******09",
@@ -5487,7 +6485,9 @@
       "violationsPerActiveDay": 0.074,
       "daysSinceLastSeen": 32,
       "escalationScore": 36.5,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******66",
@@ -5498,7 +6498,9 @@
       "violationsPerActiveDay": 0.113,
       "daysSinceLastSeen": 39,
       "escalationScore": 36.5,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******41",
@@ -5509,7 +6511,9 @@
       "violationsPerActiveDay": 0.051,
       "daysSinceLastSeen": 25,
       "escalationScore": 36.4,
-      "tier": "Escalate"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     },
     {
       "vehicleMasked": "FKN0******89",
@@ -5520,7 +6524,9 @@
       "violationsPerActiveDay": 0.083,
       "daysSinceLastSeen": 4,
       "escalationScore": 36.4,
-      "tier": "Court-Referral"
+      "tier": "Court-Referral",
+      "behaviourSegment": 1,
+      "behaviourConfidence": 1.0
     }
   ]
 }

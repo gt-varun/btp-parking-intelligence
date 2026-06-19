@@ -4,30 +4,37 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import { AppSidebar } from "./AppSidebar";
 import { TopHeader } from "./TopHeader";
+import { ResponsiveNav } from "./ResponsiveNav";
+import { useAuth } from "@/context/AuthContext";
 
 export function AppShell() {
   const { pathname } = useLocation();
+  const { user } = useAuth();
+  const isAdmin = user?.role === "admin";
 
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset className="min-h-screen w-full bg-background">
-        <TopHeader />
-        <main className="flex-1 p-4 md:p-6">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={pathname}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Outlet />
-            </motion.div>
-          </AnimatePresence>
-        </main>
-        <Toaster position="top-right" />
-      </SidebarInset>
-    </SidebarProvider>
+    <>
+      {isAdmin && <ResponsiveNav />}
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset className="min-h-screen w-full bg-background">
+          <TopHeader />
+          <main className={`flex-1 p-4 md:p-6 ${isAdmin ? "lg:pt-0" : ""}`}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={pathname}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Outlet />
+              </motion.div>
+            </AnimatePresence>
+          </main>
+          <Toaster position="top-right" />
+        </SidebarInset>
+      </SidebarProvider>
+    </>
   );
 }

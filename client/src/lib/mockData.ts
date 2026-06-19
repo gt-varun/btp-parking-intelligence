@@ -3,7 +3,10 @@ export const OVERALL_REJECTION = 0.301;
 export const AVG_CHALLAN = 750;
 export const REPEAT_REJECTION = 0.148;
 export const FIRST_TIME_REJECTION = 0.169;
-export const MODEL_ACCURACY = 0.892;
+// DEPRECATED placeholder — the dashboard now reads the REAL model accuracy
+// from GET /api/analytics/summary (`modelAccuracy`, the stacking ensemble's
+// held-out test accuracy ~0.725). Do not display this constant.
+export const MODEL_ACCURACY = 0.725;
 export const DATE_RANGE = "Jan–May 2024";
 
 export type PoiTag = "Market" | "Metro" | "Hospital" | "Commercial" | "Mall" | "Office" | "Temple" | "School";

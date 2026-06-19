@@ -224,7 +224,7 @@ function AdminDashboard() {
     <KpiCard label="Total Violations" value={summary.totalViolations.toLocaleString("en-IN")} />
     <KpiCard label="Challans Issued" value={summary.challansIssued.toLocaleString("en-IN")} />
     <KpiCard label="Overall Rejection" value={(summary.overallRejection * 100).toFixed(1) + "%"} accent="critical" />
-    <KpiCard label="Model Accuracy" value={(summary.modelAccuracy * 100).toFixed(1) + "%"} accent="normal" />
+    <KpiCard label="Model Accuracy" value={summary.modelAccuracy != null ? (summary.modelAccuracy * 100).toFixed(1) + "%" : "—"} accent="normal" />
   </div>
 )}
 

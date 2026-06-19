@@ -1,6 +1,12 @@
 {
   "model": "LinearRegression (lane-hours-lost proxy -> CLI 0-100)",
   "trainedOn": 168,
+  "validation": {
+    "r2": 0.9484,
+    "cvR2Mean": 0.816,
+    "cvR2Std": 0.1522,
+    "cvFolds": 5
+  },
   "coefficients": {
     "violations_per_day": 0.1904,
     "carriageway_share": 1.1321,

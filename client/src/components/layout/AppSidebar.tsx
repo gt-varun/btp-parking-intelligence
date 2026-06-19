@@ -43,8 +43,10 @@ export function AppSidebar() {
     return "flex items-center gap-2 " + (active ? "bg-white/10 text-white" : "text-white/85 hover:bg-white/5");
   };
 
+  const isAdmin = user?.role === "admin";
+
   return (
-    <Sidebar collapsible="icon" className="no-print">
+    <Sidebar collapsible="icon" className={`no-print ${isAdmin ? "hidden lg:flex" : ""}`}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-[var(--saffron)]/90">{label}</SidebarGroupLabel>

@@ -28,6 +28,7 @@ export default function Patrol() {
   const [priority, setPriority] = useState<any[]>([]);
   const [forecast, setForecast] = useState<any[]>([]);
   const [gaps, setGaps] = useState<any[]>([]);
+  const [forecastMeta, setForecastMeta] = useState<any>(null);
   const [tab, setTab] = useState<"table" | "map" | "forecast" | "gaps">("table");
   const [hour, setHour] = useState(new Date().getHours());
 
@@ -36,8 +37,9 @@ export default function Patrol() {
       api.get("/patrol/priority"),
       api.get("/patrol/forecast"),
       api.get("/patrol/gaps"),
-    ]).then(([p, f, g]) => {
-      setPriority(p.data); setForecast(f.data); setGaps(g.data);
+      api.get("/patrol/forecast-meta"),
+    ]).then(([p, f, g, fm]) => {
+      setPriority(p.data); setForecast(f.data); setGaps(g.data); setForecastMeta(fm.data);
     }).finally(() => setLoading(false));
   }, []);
 
@@ -141,7 +143,18 @@ export default function Patrol() {
       )}
 
       {tab === "forecast" && (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="space-y-3">
+          {forecastMeta?.backtest?.mae != null && (
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-md border border-border bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Validated forecast</span>
+              <span>· back-tested MAE <span className="font-medium text-foreground tabular-nums">{forecastMeta.backtest.mae}</span> violations/junction/day</span>
+              {forecastMeta.backtest.improvementVsNaivePct != null && (
+                <span>· <span className="font-medium text-foreground tabular-nums">{forecastMeta.backtest.improvementVsNaivePct}%</span> better than naive baseline</span>
+              )}
+              {forecastMeta.model && <span className="opacity-70">· {forecastMeta.model}</span>}
+            </div>
+          )}
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {forecast.map((day: any) => (
             <Card key={day.day}>
               <CardHeader className="pb-1">
@@ -160,6 +173,7 @@ export default function Patrol() {
               </CardContent>
             </Card>
           ))}
+          </div>
         </div>
       )}
 

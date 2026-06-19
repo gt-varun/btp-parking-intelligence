@@ -11,6 +11,7 @@ const mlMetaSchema = new mongoose.Schema({
   totalSeconds: Number,
   models: { type: mongoose.Schema.Types.Mixed }, // raw manifest.json contents
   summary: { type: mongoose.Schema.Types.Mixed }, // headline stats from load_data summary()
+  modelCards: { type: mongoose.Schema.Types.Mixed }, // per-feature validation summary for the Model Validation panel
 });
 
 export default mongoose.model("MLMeta", mlMetaSchema);

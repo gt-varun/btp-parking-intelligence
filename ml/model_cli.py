@@ -35,6 +35,8 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import r2_score
 
 from load_data import load_clean, heuristic_poi_tags
 
@@ -132,15 +134,28 @@ def fit_cli_model(g: pd.DataFrame):
     model = LinearRegression()
     model.fit(X, y)
     raw_pred = model.predict(X)
-    raw_pred = np.clip(raw_pred, 0, None)
 
-    return model, raw_pred, target
+    # VALIDATION: how well a linear model reproduces the (multiplicative)
+    # capacity-loss target. In-sample R² plus 5-fold cross-validated R² so we
+    # show it generalizes rather than just fits — the target is non-linear in
+    # the features, so this is a real fit quality, not a tautology.
+    n_splits = min(5, len(g))
+    cv_r2 = cross_val_score(LinearRegression(), X, y, cv=n_splits, scoring="r2")
+    validation = {
+        "r2": round(float(r2_score(y, raw_pred)), 4),
+        "cvR2Mean": round(float(cv_r2.mean()), 4),
+        "cvR2Std": round(float(cv_r2.std()), 4),
+        "cvFolds": int(n_splits),
+    }
+
+    raw_pred = np.clip(raw_pred, 0, None)
+    return model, raw_pred, target, validation
 
 
 def run():
     df = load_clean()
     g = build_junction_features(df)
-    model, lane_hours_lost, _ = fit_cli_model(g)
+    model, lane_hours_lost, _, validation = fit_cli_model(g)
 
     g["laneHoursLostPerDay"] = lane_hours_lost.round(2)
 
@@ -170,6 +185,7 @@ def run():
         json.dump({
             "model": "LinearRegression (lane-hours-lost proxy -> CLI 0-100)",
             "trainedOn": int(len(g)),
+            "validation": validation,
             "coefficients": dict(zip(
                 ["violations_per_day", "carriageway_share", "block_factor", "peak_concentration"],
                 [round(float(c), 4) for c in model.coef_],

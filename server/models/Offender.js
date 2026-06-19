@@ -14,6 +14,8 @@ const offenderSchema = new mongoose.Schema({
   daysSinceLastSeen: Number,
   escalationScore: { type: Number, required: true }, // model output, 0-100
   tier: { type: String, enum: ["Watch", "Warning", "Escalate", "Court-Referral"], required: true },
+  behaviourSegment: Number,        // GMM component id (0-3)
+  behaviourConfidence: Number,     // GMM soft-assignment confidence 0-1
   mlModel: { type: String, default: "" },
   mlGeneratedAt: { type: Date },
 });

@@ -31,7 +31,11 @@ router.get("/summary", async (_req, res, next) => {
       dateRange: meta?.summary?.date_range
         ? `${meta.summary.date_range[0]} to ${meta.summary.date_range[1]}`
         : null,
-      modelAccuracy: tq?.testAUC ?? null, // real AUC from model_ticket_quality.py, not a fabricated 0.892
+      // Real held-out test accuracy of the stacking ensemble; falls back to AUC
+      // for older seeds that predate testMetrics. Never a fabricated number.
+      modelAccuracy: tq?.testMetrics?.accuracy ?? tq?.testAUC ?? null,
+      modelAUC: tq?.testAUC ?? null,
+      modelName: tq?.model ?? null,
       overallRejection,
       pendingPct: meta?.summary?.pending_pct ?? null,
       repeatOffenders3plus: meta?.summary?.repeat_offenders_3plus ?? null,
@@ -39,6 +43,18 @@ router.get("/summary", async (_req, res, next) => {
       challansIssued,
       finesCollected: Math.round(challansIssued * avgChallan * (1 - overallRejection)),
       mlGeneratedAt: meta?.generatedAt ?? null,
+    });
+  } catch (err) { next(err); }
+});
+
+// GET /api/analytics/models -- per-feature model validation cards (built at
+// seed time from each model's own JSON output; see seedFromML.buildModelCards)
+router.get("/models", async (_req, res, next) => {
+  try {
+    const meta = await MLMeta.findOne({ key: "current" }).lean();
+    res.json({
+      cards: meta?.modelCards ?? [],
+      generatedAt: meta?.generatedAt ?? null,
     });
   } catch (err) { next(err); }
 });
