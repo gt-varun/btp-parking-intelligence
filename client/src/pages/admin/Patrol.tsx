@@ -12,6 +12,7 @@ import { Slider } from "@/components/ui/slider";
 import { PoiTag } from "@/components/common/PoiTag";
 import { AlertTriangle, Shield, Map, Calendar } from "lucide-react";
 import api from "@/lib/api";
+import { useI18n } from "@/lib/i18n";
 
 const ViolationMap = lazy(() =>
   import("@/components/map/ViolationMap").then((m) => ({ default: m.ViolationMap }))
@@ -24,6 +25,7 @@ const SEVERITY_COLOR: Record<string, string> = {
 };
 
 export default function Patrol() {
+  const { tx } = useI18n();
   const [loading, setLoading] = useState(true);
   const [priority, setPriority] = useState<any[]>([]);
   const [forecast, setForecast] = useState<any[]>([]);
@@ -57,23 +59,23 @@ export default function Patrol() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight">Patrol Planner</h1>
-        <p className="text-sm text-muted-foreground">Priority junctions, deployment recommendations and 7-day forecast.</p>
+        <h1 className="text-xl font-semibold tracking-tight">{tx("Patrol Planner")}</h1>
+        <p className="text-sm text-muted-foreground">{tx("Priority junctions, deployment recommendations and 7-day forecast.")}</p>
       </div>
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        <KpiCard label="Priority Junctions" value={priority.length} icon={<Map className="h-4 w-4" />} />
-        <KpiCard label="Critical (CLI ≥ 75)" value={highCount} accent="critical" icon={<AlertTriangle className="h-4 w-4" />} />
-        <KpiCard label="Units Recommended" value={totalUnits} icon={<Shield className="h-4 w-4" />} />
-        <KpiCard label="Forecast Days" value={forecast.length} icon={<Calendar className="h-4 w-4" />} />
+        <KpiCard label={tx("Priority Junctions")} value={priority.length} icon={<Map className="h-4 w-4" />} />
+        <KpiCard label={tx("Critical (CLI ≥ 75)")} value={highCount} accent="critical" icon={<AlertTriangle className="h-4 w-4" />} />
+        <KpiCard label={tx("Units Recommended")} value={totalUnits} icon={<Shield className="h-4 w-4" />} />
+        <KpiCard label={tx("Forecast Days")} value={forecast.length} icon={<Calendar className="h-4 w-4" />} />
       </div>
 
       <Tabs value={tab} onValueChange={(v) => setTab(v as typeof tab)}>
         <TabsList>
-          <TabsTrigger value="table">Priority Table</TabsTrigger>
-          <TabsTrigger value="map">Heat Map</TabsTrigger>
-          <TabsTrigger value="forecast">7-Day Forecast</TabsTrigger>
-          <TabsTrigger value="gaps">Enforcement Gaps</TabsTrigger>
+          <TabsTrigger value="table">{tx("Priority Table")}</TabsTrigger>
+          <TabsTrigger value="map">{tx("Heat Map")}</TabsTrigger>
+          <TabsTrigger value="forecast">{tx("7-Day Forecast")}</TabsTrigger>
+          <TabsTrigger value="gaps">{tx("Enforcement Gaps")}</TabsTrigger>
         </TabsList>
       </Tabs>
 
@@ -83,20 +85,20 @@ export default function Patrol() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Rank</TableHead>
-                  <TableHead>Junction</TableHead>
-                  <TableHead className="text-right">CLI</TableHead>
-                  <TableHead className="text-right">Predicted 24h</TableHead>
-                  <TableHead className="text-right">Units</TableHead>
-                  <TableHead>Peak</TableHead>
-                  <TableHead>POI Tags</TableHead>
+                  <TableHead>{tx("Rank")}</TableHead>
+                  <TableHead>{tx("Junction")}</TableHead>
+                  <TableHead className="text-right">{tx("CLI")}</TableHead>
+                  <TableHead className="text-right">{tx("Predicted 24h")}</TableHead>
+                  <TableHead className="text-right">{tx("Units")}</TableHead>
+                  <TableHead>{tx("Peak")}</TableHead>
+                  <TableHead>{tx("POI Tags")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {priority.map((j: any) => (
                   <TableRow key={j.jid}>
                     <TableCell className="font-mono text-muted-foreground">#{j.rank}</TableCell>
-                    <TableCell className="font-medium">{j.name}</TableCell>
+                    <TableCell className="font-medium">{tx(j.name)}</TableCell>
                     <TableCell className="text-right tabular-nums font-semibold">{j.cliScore}</TableCell>
                     <TableCell className="text-right tabular-nums">{j.predicted24h}</TableCell>
                     <TableCell className="text-right tabular-nums">
@@ -119,13 +121,13 @@ export default function Patrol() {
       {tab === "map" && (
         <Card className="overflow-hidden">
           <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-3 pb-3">
-            <CardTitle className="text-base">Junction Heat Map</CardTitle>
+            <CardTitle className="text-base">{tx("Junction Heat Map")}</CardTitle>
             <div className="flex items-center gap-3">
-              <span className="text-xs text-muted-foreground w-16">Hour: {hour}:00</span>
+              <span className="text-xs text-muted-foreground w-16">{tx("Hour:")} {hour}:00</span>
               <Slider className="w-40 sm:max-w-xs" min={0} max={23} step={1} value={[hour]} onValueChange={([v]) => setHour(v)} />
             </div>
           </CardHeader>
-          <CardContent className="relative p-0">
+          <CardContent className="relative isolate p-0">
             <div className="h-[500px] w-full">
               <ClientOnly fallback={<div className="h-full w-full animate-pulse bg-muted" />}>
                 {() => (
@@ -145,14 +147,14 @@ export default function Patrol() {
           {forecast.map((day: any) => (
             <Card key={day.day}>
               <CardHeader className="pb-1">
-                <CardTitle className="text-sm font-semibold">{day.day} · {day.date}</CardTitle>
+                <CardTitle className="text-sm font-semibold">{tx(day.day)} · {day.date}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 {day.top.map((t: any) => (
                   <div key={t.junction} className="flex items-center justify-between gap-2 rounded-md bg-muted/50 px-2 py-1.5 text-xs">
                     <div className="flex items-center gap-1.5">
-                      <Badge variant={SEVERITY_COLOR[t.severity] as any} className="h-4 px-1 text-[9px]">{t.severity}</Badge>
-                      <span className="font-medium">{t.junction}</span>
+                      <Badge variant={SEVERITY_COLOR[t.severity] as any} className="h-4 px-1 text-[9px]">{tx(t.severity)}</Badge>
+                      <span className="font-medium">{tx(t.junction)}</span>
                     </div>
                     <span className="tabular-nums text-muted-foreground">{t.predicted}</span>
                   </div>
@@ -169,8 +171,8 @@ export default function Patrol() {
             <Card key={g.junction} className="border-[var(--critical)]/30">
               <CardContent className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center">
                 <div className="flex-1 space-y-1">
-                  <div className="font-semibold">{g.junction}</div>
-                  <div className="text-xs text-muted-foreground">{g.note}</div>
+                  <div className="font-semibold">{tx(g.junction)}</div>
+                  <div className="text-xs text-muted-foreground">{tx(g.note)}</div>
                   <div className="flex flex-wrap gap-1">
                     {g.poiTags.map((t: string) => <PoiTag key={t} tag={t as any} />)}
                   </div>
@@ -178,11 +180,11 @@ export default function Patrol() {
                 <div className="grid grid-cols-2 gap-3 text-center sm:grid-cols-2">
                   <div className="rounded-lg bg-[var(--critical)]/10 p-2">
                     <div className="text-lg font-bold text-[var(--critical)]">{g.cliWindow}</div>
-                    <div className="text-[10px] text-muted-foreground">CLI Window</div>
+                    <div className="text-[10px] text-muted-foreground">{tx("CLI Window")}</div>
                   </div>
                   <div className="rounded-lg bg-muted p-2">
                     <div className="text-lg font-bold">{g.enforcementLevel}</div>
-                    <div className="text-[10px] text-muted-foreground">Enforcement</div>
+                    <div className="text-[10px] text-muted-foreground">{tx("Enforcement")}</div>
                   </div>
                 </div>
               </CardContent>

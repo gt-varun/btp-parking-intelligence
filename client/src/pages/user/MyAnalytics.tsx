@@ -6,11 +6,13 @@ import { SectionSkeleton } from "@/components/common/SectionSkeleton";
 import { FileText, Wallet, AlertCircle, MapPin } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell, Legend } from "recharts";
 import api from "@/lib/api";
+import { useI18n } from "@/lib/i18n";
 
-const COLORS = ["#1e3a8a", "#f59e0b", "#dc2626", "#10b981", "#8b5cf6"];
+const COLORS = ["#3b82f6", "#f59e0b", "#dc2626", "#10b981", "#8b5cf6"];
 
 export default function MyAnalytics() {
   const { user } = useAuth();
+  const { tx } = useI18n();
   const [challans, setChallans] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,40 +40,40 @@ export default function MyAnalytics() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight">My Analytics</h1>
-        <p className="text-sm text-muted-foreground">Personal violation summary for {user?.email}.</p>
+        <h1 className="text-xl font-semibold tracking-tight">{tx("My Analytics")}</h1>
+        <p className="text-sm text-muted-foreground">{tx("Personal violation summary for")} {user?.email}.</p>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        <KpiCard label="Total Violations" value={stats.total} icon={<FileText className="h-4 w-4" />} />
-        <KpiCard label="Pending" value={stats.pending} accent="critical" icon={<AlertCircle className="h-4 w-4" />} />
-        <KpiCard label="Total Fines" value={`₹${stats.totalFines.toLocaleString("en-IN")}`} icon={<Wallet className="h-4 w-4" />} />
-        <KpiCard label="Top Hotspot" value={stats.topJunction} icon={<MapPin className="h-4 w-4" />} />
+        <KpiCard label={tx("Total Violations")} value={stats.total} icon={<FileText className="h-4 w-4" />} />
+        <KpiCard label={tx("Pending")} value={stats.pending} accent="critical" icon={<AlertCircle className="h-4 w-4" />} />
+        <KpiCard label={tx("Total Fines")} value={`₹${stats.totalFines.toLocaleString("en-IN")}`} icon={<Wallet className="h-4 w-4" />} />
+        <KpiCard label={tx("Top Hotspot")} value={tx(stats.topJunction)} icon={<MapPin className="h-4 w-4" />} />
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-base">Violations over time</CardTitle></CardHeader>
+          <CardHeader className="pb-2"><CardTitle className="text-base">{tx("Violations over time")}</CardTitle></CardHeader>
           <CardContent className="h-[280px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={stats.byMonth}>
                 <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                 <XAxis dataKey="month" tick={{ fontSize: 12 }} />
                 <YAxis allowDecimals={false} tick={{ fontSize: 12 }} />
-                <Tooltip />
-                <Bar dataKey="count" fill="#1e3a8a" radius={[4, 4, 0, 0]} />
+                <Tooltip cursor={false} />
+                <Bar dataKey="count" fill="var(--primary)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-base">By violation type</CardTitle></CardHeader>
+          <CardHeader className="pb-2"><CardTitle className="text-base">{tx("By violation type")}</CardTitle></CardHeader>
           <CardContent className="h-[280px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie data={stats.byType} dataKey="value" nameKey="name" outerRadius={90} label>
                   {stats.byType.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                 </Pie>
-                <Legend wrapperStyle={{ fontSize: 12 }} />
-                <Tooltip />
+                <Legend wrapperStyle={{ fontSize: 12 }} formatter={(v) => tx(String(v))} />
+                <Tooltip formatter={(val: number, n: any) => [val, tx(n)]} />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>

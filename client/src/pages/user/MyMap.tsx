@@ -3,12 +3,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ClientOnly } from "@/components/common/ClientOnly";
 import { SectionSkeleton } from "@/components/common/SectionSkeleton";
 import api from "@/lib/api";
+import { useI18n } from "@/lib/i18n";
 
 const UserViolationsMap = lazy(() =>
   import("@/components/map/UserViolationsMap").then((m) => ({ default: m.UserViolationsMap }))
 );
 
 export default function MyMap() {
+  const { tx } = useI18n();
   const [challans, setChallans] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,9 +21,9 @@ export default function MyMap() {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight">My Violation Map</h1>
+        <h1 className="text-xl font-semibold tracking-tight">{tx("My Violation Map")}</h1>
         <p className="text-sm text-muted-foreground">
-          Locations where your {challans.length} parking violation(s) were recorded.
+          {tx("Locations where your")} {challans.length} {tx("parking violation(s) were recorded.")}
         </p>
       </div>
       <Card className="overflow-hidden">

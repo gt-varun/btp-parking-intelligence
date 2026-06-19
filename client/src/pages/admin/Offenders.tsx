@@ -8,6 +8,7 @@ import { KpiCard } from "@/components/common/KpiCard";
 import { SectionSkeleton } from "@/components/common/SectionSkeleton";
 import { AlertTriangle, Users, Wallet, Search, Gauge } from "lucide-react";
 import api from "@/lib/api";
+import { useI18n } from "@/lib/i18n";
 
 const TIER_VARIANT: Record<string, "destructive" | "secondary" | "outline"> = {
   "Court-Referral": "destructive",
@@ -17,6 +18,7 @@ const TIER_VARIANT: Record<string, "destructive" | "secondary" | "outline"> = {
 };
 
 export default function Offenders() {
+  const { tx } = useI18n();
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState<"ml" | "demo">("ml");
 
@@ -57,19 +59,19 @@ export default function Offenders() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight">Repeat Offender Escalation Engine</h1>
+          <h1 className="text-xl font-semibold tracking-tight">{tx("Repeat Offender Escalation Engine")}</h1>
           <p className="text-sm text-muted-foreground">
             {view === "ml"
-              ? "KMeans risk tiering across all 298,450 records — vehicles scored on frequency, confirmed-violation rate, junction spread and recency."
-              : "Citizens with 2+ violations in the demo account challan log."}
+              ? tx("KMeans risk tiering across all 298,450 records — vehicles scored on frequency, confirmed-violation rate, junction spread and recency.")
+              : tx("Citizens with 2+ violations in the demo account challan log.")}
           </p>
         </div>
         <div className="flex gap-1 rounded-lg border bg-muted/30 p-1">
           <Button size="sm" variant={view === "ml" ? "default" : "ghost"} onClick={() => setView("ml")}>
-            Dataset-wide (model)
+            {tx("Dataset-wide (model)")}
           </Button>
           <Button size="sm" variant={view === "demo" ? "default" : "ghost"} onClick={() => setView("demo")}>
-            Demo accounts
+            {tx("Demo accounts")}
           </Button>
         </div>
       </div>
@@ -77,20 +79,20 @@ export default function Offenders() {
       {view === "ml" ? (
         <>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            <KpiCard label="Total Repeat Offenders" value={totalRepeat.toLocaleString("en-IN")} icon={<Users className="h-4 w-4" />} />
+            <KpiCard label={tx("Total Repeat Offenders")} value={totalRepeat.toLocaleString("en-IN")} icon={<Users className="h-4 w-4" />} />
             <KpiCard
-              label="Court-Referral Tier"
+              label={tx("Court-Referral Tier")}
               value={(tierCounts["Court-Referral"] ?? 0).toLocaleString("en-IN")}
               accent="critical"
               icon={<AlertTriangle className="h-4 w-4" />}
             />
-            <KpiCard label="Escalate Tier" value={(tierCounts["Escalate"] ?? 0).toLocaleString("en-IN")} icon={<Gauge className="h-4 w-4" />} />
-            <KpiCard label="Watch + Warning" value={((tierCounts["Watch"] ?? 0) + (tierCounts["Warning"] ?? 0)).toLocaleString("en-IN")} />
+            <KpiCard label={tx("Escalate Tier")} value={(tierCounts["Escalate"] ?? 0).toLocaleString("en-IN")} icon={<Gauge className="h-4 w-4" />} />
+            <KpiCard label={tx("Watch + Warning")} value={((tierCounts["Watch"] ?? 0) + (tierCounts["Warning"] ?? 0)).toLocaleString("en-IN")} />
           </div>
 
           <Card>
             <CardHeader className="flex flex-row flex-wrap items-center gap-3 pb-2">
-              <CardTitle className="text-base">Top Scored Vehicles</CardTitle>
+              <CardTitle className="text-base">{tx("Top Scored Vehicles")}</CardTitle>
               <div className="flex flex-wrap gap-1.5">
                 {["Court-Referral", "Escalate", "Warning", "Watch"].map((t) => (
                   <Badge
@@ -99,14 +101,14 @@ export default function Offenders() {
                     className="cursor-pointer"
                     onClick={() => setTierFilter(tierFilter === t ? null : t)}
                   >
-                    {t} ({tierCounts[t] ?? 0})
+                    {tx(t)} ({tierCounts[t] ?? 0})
                   </Badge>
                 ))}
               </div>
               <div className="relative ml-auto w-56">
                 <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-muted-foreground" />
                 <Input
-                  placeholder="Search vehicle id…"
+                  placeholder={tx("Search vehicle id…")}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="pl-8 h-8 text-sm"
@@ -117,13 +119,13 @@ export default function Offenders() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Vehicle (masked)</TableHead>
-                    <TableHead className="text-right">Violations</TableHead>
-                    <TableHead className="text-right">Confirmed</TableHead>
-                    <TableHead className="text-right">Junction Spread</TableHead>
-                    <TableHead className="text-right">Days Since Last Seen</TableHead>
-                    <TableHead className="text-right">Escalation Score</TableHead>
-                    <TableHead>Tier</TableHead>
+                    <TableHead>{tx("Vehicle (masked)")}</TableHead>
+                    <TableHead className="text-right">{tx("Violations")}</TableHead>
+                    <TableHead className="text-right">{tx("Confirmed")}</TableHead>
+                    <TableHead className="text-right">{tx("Junction Spread")}</TableHead>
+                    <TableHead className="text-right">{tx("Days Since Last Seen")}</TableHead>
+                    <TableHead className="text-right">{tx("Escalation Score")}</TableHead>
+                    <TableHead>{tx("Tier")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -135,11 +137,11 @@ export default function Offenders() {
                       <TableCell className="text-right tabular-nums">{o.junctionSpread}</TableCell>
                       <TableCell className="text-right tabular-nums text-muted-foreground">{o.daysSinceLastSeen}</TableCell>
                       <TableCell className="text-right tabular-nums font-semibold">{o.escalationScore.toFixed(1)}</TableCell>
-                      <TableCell><Badge variant={TIER_VARIANT[o.tier]}>{o.tier}</Badge></TableCell>
+                      <TableCell><Badge variant={TIER_VARIANT[o.tier]}>{tx(o.tier)}</Badge></TableCell>
                     </TableRow>
                   ))}
                   {mlOffenders.length === 0 && (
-                    <TableRow><TableCell colSpan={7} className="text-center text-muted-foreground py-8">No results found</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={7} className="text-center text-muted-foreground py-8">{tx("No results found")}</TableCell></TableRow>
                   )}
                 </TableBody>
               </Table>
@@ -149,22 +151,22 @@ export default function Offenders() {
       ) : (
         <>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            <KpiCard label="Total Offenders" value={demoOffenders.length} icon={<Users className="h-4 w-4" />} />
-            <KpiCard label="Critical (5+)" value={demoCritical} accent="critical" icon={<AlertTriangle className="h-4 w-4" />} />
-            <KpiCard label="Total Fines Due" value={`₹${demoTotalFines.toLocaleString("en-IN")}`} icon={<Wallet className="h-4 w-4" />} />
+            <KpiCard label={tx("Total Offenders")} value={demoOffenders.length} icon={<Users className="h-4 w-4" />} />
+            <KpiCard label={tx("Critical (5+)")} value={demoCritical} accent="critical" icon={<AlertTriangle className="h-4 w-4" />} />
+            <KpiCard label={tx("Total Fines Due")} value={`₹${demoTotalFines.toLocaleString("en-IN")}`} icon={<Wallet className="h-4 w-4" />} />
             <KpiCard
-              label="Avg Violations"
+              label={tx("Avg Violations")}
               value={(demoOffenders.reduce((s, o) => s + o.violations, 0) / (demoOffenders.length || 1)).toFixed(1)}
             />
           </div>
 
           <Card>
             <CardHeader className="flex flex-row items-center gap-3 pb-2">
-              <CardTitle className="text-base">Offender List</CardTitle>
+              <CardTitle className="text-base">{tx("Offender List")}</CardTitle>
               <div className="relative ml-auto w-56">
                 <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-muted-foreground" />
                 <Input
-                  placeholder="Search by email…"
+                  placeholder={tx("Search by email…")}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="pl-8 h-8 text-sm"
@@ -175,13 +177,13 @@ export default function Offenders() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Email</TableHead>
-                    <TableHead className="text-right">Violations</TableHead>
-                    <TableHead className="text-right">Pending</TableHead>
-                    <TableHead className="text-right">Total Fines</TableHead>
-                    <TableHead>Last Seen</TableHead>
-                    <TableHead>Hotspot Junctions</TableHead>
-                    <TableHead>Risk</TableHead>
+                    <TableHead>{tx("Email")}</TableHead>
+                    <TableHead className="text-right">{tx("Violations")}</TableHead>
+                    <TableHead className="text-right">{tx("Pending")}</TableHead>
+                    <TableHead className="text-right">{tx("Total Fines")}</TableHead>
+                    <TableHead>{tx("Last Seen")}</TableHead>
+                    <TableHead>{tx("Hotspot Junctions")}</TableHead>
+                    <TableHead>{tx("Risk")}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -193,11 +195,11 @@ export default function Offenders() {
                         <TableCell className="text-right tabular-nums font-semibold">{o.violations}</TableCell>
                         <TableCell className="text-right tabular-nums text-[var(--critical)]">{o.pendingCount}</TableCell>
                         <TableCell className="text-right tabular-nums">₹{o.totalFines.toLocaleString("en-IN")}</TableCell>
-                        <TableCell className="tabular-nums text-muted-foreground">{o.lastSeen}</TableCell>
+                        <TableCell className="tabular-nums text-muted-foreground">{tx(o.lastSeen)}</TableCell>
                         <TableCell>
                           <div className="flex flex-wrap gap-1">
                             {o.junctions.slice(0, 2).map((j: string) => (
-                              <Badge key={j} variant="outline" className="text-[10px]">{j}</Badge>
+                              <Badge key={j} variant="outline" className="text-[10px]">{tx(j)}</Badge>
                             ))}
                             {o.junctions.length > 2 && (
                               <Badge variant="outline" className="text-[10px]">+{o.junctions.length - 2}</Badge>
@@ -206,14 +208,14 @@ export default function Offenders() {
                         </TableCell>
                         <TableCell>
                           <Badge variant={risk === "critical" ? "destructive" : risk === "warning" ? "secondary" : "outline"}>
-                            {risk}
+                            {tx(risk)}
                           </Badge>
                         </TableCell>
                       </TableRow>
                     );
                   })}
                   {demoFiltered.length === 0 && (
-                    <TableRow><TableCell colSpan={7} className="text-center text-muted-foreground py-8">No results found</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={7} className="text-center text-muted-foreground py-8">{tx("No results found")}</TableCell></TableRow>
                   )}
                 </TableBody>
               </Table>

@@ -139,6 +139,10 @@
 .leaflet-container {
   background: var(--color-muted);
   font-family: var(--font-sans);
+  /* Trap Leaflet's internal high z-index panes/controls (up to 1000) inside
+     their own stacking context so they can't paint over the sticky app header. */
+  isolation: isolate;
+  z-index: 0;
 }
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
@@ -146,6 +150,64 @@
   color: var(--color-card-foreground);
   border-radius: 0.5rem;
   box-shadow: var(--shadow-card-hover);
+}
+
+/* ── Recharts: theme-aware colours (light + dark) ───────────── */
+/* Pages render raw Recharts, so override its hardcoded light defaults
+   with theme tokens so every chart works in both modes. */
+.recharts-cartesian-axis-tick text,
+.recharts-polar-angle-axis text {
+  fill: var(--color-muted-foreground);
+}
+.recharts-cartesian-grid line {
+  stroke: var(--color-border);
+}
+.recharts-pie-label-text,
+.recharts-label {
+  fill: var(--color-foreground);
+}
+.recharts-legend-item-text {
+  color: var(--color-foreground) !important;
+}
+.recharts-default-tooltip {
+  background-color: var(--color-popover) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: var(--shadow-card-hover);
+  color: var(--color-popover-foreground) !important;
+}
+.recharts-tooltip-label,
+.recharts-tooltip-item {
+  color: var(--color-popover-foreground) !important;
+}
+
+/* ── Recharts: clean hover-focus animation (all charts) ─────── */
+/* Hovering a bar/sector lifts it to full opacity while its siblings
+   gently fade, drawing the eye to the data point under the cursor. */
+.recharts-bar-rectangle,
+.recharts-pie-sector,
+.recharts-sector {
+  transition: opacity 0.18s ease;
+}
+.recharts-bar:hover .recharts-bar-rectangle,
+.recharts-pie:hover .recharts-pie-sector {
+  opacity: 0.45;
+}
+.recharts-bar:hover .recharts-bar-rectangle:hover,
+.recharts-pie:hover .recharts-pie-sector:hover {
+  opacity: 1;
+}
+.recharts-active-dot circle {
+  transition: r 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recharts-bar-rectangle,
+  .recharts-pie-sector,
+  .recharts-sector,
+  .recharts-active-dot circle {
+    transition: none;
+  }
 }
 
 @media print {

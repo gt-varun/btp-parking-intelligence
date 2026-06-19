@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaf
 import { useEffect, useMemo } from "react";
 import type { Junction } from "@/lib/mockData";
 import { cliStatus } from "@/components/common/StatusBadge";
+import { useI18n } from "@/lib/i18n";
 
 const COLOR: Record<"critical" | "warning" | "normal", string> = {
   critical: "#dc2626",
@@ -32,6 +33,7 @@ export function ViolationMap({
   layer: "cli" | "count";
   junctions: Junction[];
 }) {
+  const { tx } = useI18n();
   const maxV = useMemo(
     () => Math.max(...junctions.map((j) => j.violations ?? 0), 1),
     [junctions]
@@ -64,11 +66,11 @@ export function ViolationMap({
           >
             <Popup>
               <div className="space-y-1 text-xs">
-                <div className="text-sm font-semibold">{j.name}</div>
-                <div><span className="text-muted-foreground">Violations: </span><span className="font-medium">{(j.violations ?? 0).toLocaleString("en-IN")}</span></div>
-                <div><span className="text-muted-foreground">CLI Score: </span><span className="font-medium">{j.cliScore}</span></div>
-                <div><span className="text-muted-foreground">Rejection: </span><span className="font-medium">{((j.rejectionRate ?? 0) * 100).toFixed(1)}%</span></div>
-                <div><span className="text-muted-foreground">Top: </span><span className="font-medium">{j.topViolation}</span></div>
+                <div className="text-sm font-semibold">{tx(j.name)}</div>
+                <div><span className="text-muted-foreground">{tx("Violations")}: </span><span className="font-medium">{(j.violations ?? 0).toLocaleString("en-IN")}</span></div>
+                <div><span className="text-muted-foreground">{tx("CLI Score")}: </span><span className="font-medium">{j.cliScore}</span></div>
+                <div><span className="text-muted-foreground">{tx("Rejection")}: </span><span className="font-medium">{((j.rejectionRate ?? 0) * 100).toFixed(1)}%</span></div>
+                <div><span className="text-muted-foreground">{tx("Top")}: </span><span className="font-medium">{tx(j.topViolation)}</span></div>
               </div>
             </Popup>
           </CircleMarker>

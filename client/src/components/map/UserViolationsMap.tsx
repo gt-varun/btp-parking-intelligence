@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaflet";
 import { useEffect } from "react";
+import { useI18n } from "@/lib/i18n";
 
 interface Challan {
   challanId?: string; _id?: string;
@@ -27,6 +28,7 @@ const STATUS_COLOR: Record<string, string> = {
 };
 
 export function UserViolationsMap({ challans }: { challans: Challan[] }) {
+  const { tx } = useI18n();
   return (
     <MapContainer center={[12.9716, 77.5946]} zoom={12} scrollWheelZoom style={{ height: "100%", width: "100%" }}>
       <TileLayer
@@ -42,11 +44,11 @@ export function UserViolationsMap({ challans }: { challans: Challan[] }) {
             pathOptions={{ color, fillColor: color, fillOpacity: 0.55, weight: 1.5 }}>
             <Popup>
               <div className="space-y-1 text-xs">
-                <div className="text-sm font-semibold">{c.type}</div>
-                <div>{c.junctionName}</div>
+                <div className="text-sm font-semibold">{tx(c.type)}</div>
+                <div>{tx(c.junctionName)}</div>
                 <div className="text-muted-foreground">{c.date}</div>
-                <div>Fine: <span className="font-medium">₹{c.fine.toLocaleString("en-IN")}</span></div>
-                <div>Status: <span className="font-medium">{c.status}</span></div>
+                <div>{tx("Fine")}: <span className="font-medium">₹{c.fine.toLocaleString("en-IN")}</span></div>
+                <div>{tx("Status")}: <span className="font-medium">{tx(c.status)}</span></div>
               </div>
             </Popup>
           </CircleMarker>

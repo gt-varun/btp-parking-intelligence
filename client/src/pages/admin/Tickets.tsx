@@ -10,6 +10,7 @@ import { AnimatedCounter } from "@/components/common/AnimatedCounter";
 import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend, PieChart, Pie, LineChart, Line } from "recharts";
 import { IndianRupee, Percent, TrendingDown, TrendingUp } from "lucide-react";
 import api from "@/lib/api";
+import { useI18n } from "@/lib/i18n";
 
 function fmtINR(n: number) {
   if (n >= 1e7) return "₹" + (n / 1e7).toFixed(2) + " Cr";
@@ -18,6 +19,7 @@ function fmtINR(n: number) {
 }
 
 export default function Tickets() {
+  const { tx } = useI18n();
   const [loading, setLoading] = useState(true);
   const [improvement, setImprovement] = useState(20);
   const [selected, setSelected] = useState<any>(null);
@@ -43,7 +45,7 @@ export default function Tickets() {
   const lostRevenue = totalFines * summary.overallRejection;
   const savedRevenue = lostRevenue * (improvement / 100);
   const avgChallan = summary.avgChallan;
-  const COLORS = ["#dc2626", "#f59e0b", "#1e3a8a", "#16a34a", "#8b5cf6", "#6b7280"];
+  const COLORS = ["#dc2626", "#f59e0b", "#3b82f6", "#16a34a", "#8b5cf6", "#6b7280"];
 
   const top10 = [...junctions].sort((a: any, b: any) => b.violations - a.violations).slice(0, 10);
 
@@ -51,15 +53,15 @@ export default function Tickets() {
     <>
       <div className="space-y-5">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight">Ticket Quality Monitor</h1>
-          <p className="text-sm text-muted-foreground">Rejection rates, revenue recovery and ticket-quality drill-down.</p>
+          <h1 className="text-xl font-semibold tracking-tight">{tx("Ticket Quality Monitor")}</h1>
+          <p className="text-sm text-muted-foreground">{tx("Rejection rates, revenue recovery and ticket-quality drill-down.")}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <KpiCard label="Challans Issued" value={<AnimatedCounter value={summary.challansIssued} />} icon={<IndianRupee className="h-4 w-4" />} />
-          <KpiCard label="Overall Rejection" value={<AnimatedCounter value={summary.overallRejection * 100} suffix="%" format={(n) => n.toFixed(1)} />} accent="critical" icon={<TrendingDown className="h-4 w-4" />} />
-          <KpiCard label="Avg. Challan" value={`₹${avgChallan.toLocaleString("en-IN")}`} icon={<Percent className="h-4 w-4" />} />
-          <KpiCard label="Lost Revenue" value={fmtINR(lostRevenue)} accent="critical" icon={<TrendingUp className="h-4 w-4" />} />
+          <KpiCard label={tx("Challans Issued")} value={<AnimatedCounter value={summary.challansIssued} />} icon={<IndianRupee className="h-4 w-4" />} />
+          <KpiCard label={tx("Overall Rejection")} value={<AnimatedCounter value={summary.overallRejection * 100} suffix="%" format={(n) => n.toFixed(1)} />} accent="critical" icon={<TrendingDown className="h-4 w-4" />} />
+          <KpiCard label={tx("Avg. Challan")} value={`₹${avgChallan.toLocaleString("en-IN")}`} icon={<Percent className="h-4 w-4" />} />
+          <KpiCard label={tx("Lost Revenue")} value={fmtINR(lostRevenue)} accent="critical" icon={<TrendingUp className="h-4 w-4" />} />
         </div>
 
         {/* Revenue simulator */}
@@ -67,12 +69,12 @@ export default function Tickets() {
           <CardContent className="space-y-4 p-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm font-medium">Revenue Recovery Simulator</div>
-                <div className="text-xs text-[var(--navy-foreground)]/60">Drag to simulate rejection rate improvement</div>
+                <div className="text-sm font-medium">{tx("Revenue Recovery Simulator")}</div>
+                <div className="text-xs text-[var(--navy-foreground)]/60">{tx("Drag to simulate rejection rate improvement")}</div>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-semibold text-[var(--saffron)]">{fmtINR(savedRevenue)}</div>
-                <div className="text-xs text-[var(--navy-foreground)]/60">recovered at {improvement}% improvement</div>
+                <div className="text-xs text-[var(--navy-foreground)]/60">{tx("recovered at")} {improvement}% {tx("improvement")}</div>
               </div>
             </div>
             <Slider min={5} max={100} step={5} value={[improvement]} onValueChange={([v]) => setImprovement(v)} />
@@ -82,13 +84,13 @@ export default function Tickets() {
         <div className="grid gap-4 lg:grid-cols-2">
           {/* Violations rejection */}
           <Card>
-            <CardHeader className="pb-2"><CardTitle className="text-base">Rejection by Violation Type</CardTitle></CardHeader>
+            <CardHeader className="pb-2"><CardTitle className="text-base">{tx("Rejection by Violation Type")}</CardTitle></CardHeader>
             <CardContent className="h-[260px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={violations} layout="vertical">
                   <XAxis type="number" tick={{ fontSize: 11 }} tickFormatter={(v) => (v * 100).toFixed(0) + "%"} />
-                  <YAxis type="category" dataKey="type" tick={{ fontSize: 10 }} width={130} />
-                  <Tooltip formatter={(v: number) => [(v * 100).toFixed(1) + "%", "Rejection"]} />
+                  <YAxis type="category" dataKey="type" tick={{ fontSize: 10 }} width={130} tickFormatter={(t) => tx(t)} />
+                  <Tooltip cursor={false} formatter={(v: number) => [(v * 100).toFixed(1) + "%", tx("Rejection")]} labelFormatter={(t) => tx(t)} />
                   <Bar dataKey="rejectionRate" radius={[0, 4, 4, 0]}>
                     {violations.map((_: any, i: number) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                   </Bar>
@@ -99,13 +101,13 @@ export default function Tickets() {
 
           {/* Vehicle type */}
           <Card>
-            <CardHeader className="pb-2"><CardTitle className="text-base">Rejection by Vehicle Type</CardTitle></CardHeader>
+            <CardHeader className="pb-2"><CardTitle className="text-base">{tx("Rejection by Vehicle Type")}</CardTitle></CardHeader>
             <CardContent className="h-[260px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={vehicles}>
-                  <XAxis dataKey="type" tick={{ fontSize: 10 }} angle={-20} textAnchor="end" height={50} />
+                  <XAxis dataKey="type" tick={{ fontSize: 10 }} angle={-20} textAnchor="end" height={50} tickFormatter={(t) => tx(t)} />
                   <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => (v * 100).toFixed(0) + "%"} />
-                  <Tooltip formatter={(v: number) => [(v * 100).toFixed(1) + "%"]} />
+                  <Tooltip cursor={false} formatter={(v: number) => [(v * 100).toFixed(1) + "%"]} labelFormatter={(t) => tx(t)} />
                   <Bar dataKey="rejectionRate" fill="var(--saffron)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -115,26 +117,26 @@ export default function Tickets() {
 
         {/* Junction table */}
         <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-base">Junction Drill-down</CardTitle></CardHeader>
+          <CardHeader className="pb-2"><CardTitle className="text-base">{tx("Junction Drill-down")}</CardTitle></CardHeader>
           <CardContent className="overflow-x-auto p-0">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Junction</TableHead>
-                  <TableHead className="text-right">Violations</TableHead>
-                  <TableHead className="text-right">Rejection %</TableHead>
-                  <TableHead className="text-right">CLI</TableHead>
-                  <TableHead>Top Violation</TableHead>
+                  <TableHead>{tx("Junction")}</TableHead>
+                  <TableHead className="text-right">{tx("Violations")}</TableHead>
+                  <TableHead className="text-right">{tx("Rejection %")}</TableHead>
+                  <TableHead className="text-right">{tx("CLI")}</TableHead>
+                  <TableHead>{tx("Top Violation")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {top10.map((j: any) => (
                   <TableRow key={j.jid} className="cursor-pointer hover:bg-muted/50" onClick={() => setSelected(j)}>
-                    <TableCell className="font-medium">{j.name}</TableCell>
+                    <TableCell className="font-medium">{tx(j.name)}</TableCell>
                     <TableCell className="text-right tabular-nums">{j.violations.toLocaleString("en-IN")}</TableCell>
                     <TableCell className="text-right tabular-nums">{(j.rejectionRate * 100).toFixed(1)}%</TableCell>
                     <TableCell className="text-right tabular-nums">{j.cliScore}</TableCell>
-                    <TableCell><StatusBadge status={cliStatus(j.cliScore)}>{j.topViolation}</StatusBadge></TableCell>
+                    <TableCell><StatusBadge status={cliStatus(j.cliScore)}>{tx(j.topViolation)}</StatusBadge></TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -147,7 +149,7 @@ export default function Tickets() {
         <Sheet open={!!selected} onOpenChange={() => setSelected(null)}>
           <SheetContent>
             <SheetHeader>
-              <SheetTitle>{selected.name}</SheetTitle>
+              <SheetTitle>{tx(selected.name)}</SheetTitle>
             </SheetHeader>
             <div className="mt-4 space-y-3 text-sm">
               <div className="grid grid-cols-2 gap-2">
@@ -160,8 +162,8 @@ export default function Tickets() {
                   ["Peak Hour", selected.peakHour + ":00"],
                 ].map(([k, v]) => (
                   <div key={k} className="rounded-lg border p-2">
-                    <div className="text-xs text-muted-foreground">{k}</div>
-                    <div className="font-medium">{v}</div>
+                    <div className="text-xs text-muted-foreground">{tx(String(k))}</div>
+                    <div className="font-medium">{typeof v === "string" ? tx(v) : v}</div>
                   </div>
                 ))}
               </div>

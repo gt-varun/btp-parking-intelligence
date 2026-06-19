@@ -4,6 +4,7 @@ import { ClientOnly } from "@/components/common/ClientOnly";
 import { MapLegend } from "@/components/map/MapLegend";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useI18n } from "@/lib/i18n";
 
 const ViolationMap = lazy(() =>
   import("@/components/map/ViolationMap").then((m) => ({
@@ -12,6 +13,7 @@ const ViolationMap = lazy(() =>
 );
 
 export default function AdminLiveMap() {
+  const { tx } = useI18n();
   const [junctions, setJunctions] = useState<any[]>([]);
   const [hour, setHour] = useState(new Date().getHours());
   const [layer, setLayer] = useState<"cli" | "count">("cli");
@@ -32,17 +34,17 @@ export default function AdminLiveMap() {
       <div className="flex flex-wrap items-center justify-between gap-3 px-6 pt-1 pb-3">
         <Tabs value={layer} onValueChange={(v) => setLayer(v as "cli" | "count")} className="h-8">
           <TabsList className="h-8">
-            <TabsTrigger value="cli" className="h-6 text-xs">CLI</TabsTrigger>
-            <TabsTrigger value="count" className="h-6 text-xs">Count</TabsTrigger>
+            <TabsTrigger value="cli" className="h-6 text-xs">{tx("CLI")}</TabsTrigger>
+            <TabsTrigger value="count" className="h-6 text-xs">{tx("Count")}</TabsTrigger>
           </TabsList>
         </Tabs>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-muted-foreground w-16">Hour: {hour}:00</span>
+          <span className="text-xs text-muted-foreground w-16">{tx("Hour:")} {hour}:00</span>
           <Slider className="w-40 sm:max-w-xs" min={0} max={23} step={1} value={[hour]} onValueChange={([v]) => setHour(v)} />
         </div>
       </div>
 
-      <div className="relative h-[500px] w-full">
+      <div className="relative isolate h-[500px] w-full">
         <ClientOnly
           fallback={<div className="h-full w-full animate-pulse bg-muted" />}
         >

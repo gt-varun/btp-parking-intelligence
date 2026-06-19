@@ -8,6 +8,7 @@ import { SectionSkeleton } from "@/components/common/SectionSkeleton";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import api from "@/lib/api";
+import { useI18n } from "@/lib/i18n";
 
 interface Challan {
   challanId: string; date: string; junctionName: string;
@@ -16,6 +17,7 @@ interface Challan {
 
 export default function MyChallans() {
   const { user } = useAuth();
+  const { tx } = useI18n();
   const [challans, setChallans] = useState<Challan[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,10 +29,10 @@ export default function MyChallans() {
   const update = async (id: string, status: "paid" | "disputed") => {
     try {
       await api.patch(`/challans/${id}`, { status });
-      toast.success(status === "paid" ? "Challan marked as paid" : "Dispute submitted");
+      toast.success(status === "paid" ? tx("Challan marked as paid") : tx("Dispute submitted"));
       load();
     } catch {
-      toast.error("Failed to update challan");
+      toast.error(tx("Failed to update challan"));
     }
   };
 
@@ -41,24 +43,24 @@ export default function MyChallans() {
       <Toaster position="top-right" />
       <div className="space-y-4">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight">My Challans</h1>
-          <p className="text-sm text-muted-foreground">All parking violations linked to {user?.email}.</p>
+          <h1 className="text-xl font-semibold tracking-tight">{tx("My Challans")}</h1>
+          <p className="text-sm text-muted-foreground">{tx("All parking violations linked to")} {user?.email}.</p>
         </div>
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base">{challans.length} record(s)</CardTitle>
+            <CardTitle className="text-base">{challans.length} {tx("record(s)")}</CardTitle>
           </CardHeader>
           <CardContent className="overflow-x-auto p-0">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Challan ID</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Junction</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead className="text-right">Fine</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="text-right">Action</TableHead>
+                  <TableHead>{tx("Challan ID")}</TableHead>
+                  <TableHead>{tx("Date")}</TableHead>
+                  <TableHead>{tx("Junction")}</TableHead>
+                  <TableHead>{tx("Type")}</TableHead>
+                  <TableHead className="text-right">{tx("Fine")}</TableHead>
+                  <TableHead>{tx("Status")}</TableHead>
+                  <TableHead className="text-right">{tx("Action")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -66,19 +68,19 @@ export default function MyChallans() {
                   <TableRow key={c.challanId}>
                     <TableCell className="font-mono text-xs">{c.challanId}</TableCell>
                     <TableCell>{c.date}</TableCell>
-                    <TableCell>{c.junctionName}</TableCell>
-                    <TableCell>{c.type}</TableCell>
+                    <TableCell>{tx(c.junctionName)}</TableCell>
+                    <TableCell>{tx(c.type)}</TableCell>
                     <TableCell className="text-right tabular-nums">₹{c.fine.toLocaleString("en-IN")}</TableCell>
                     <TableCell>
                       <StatusBadge status={c.status === "paid" ? "normal" : c.status === "disputed" ? "warning" : "critical"}>
-                        {c.status}
+                        {tx(c.status)}
                       </StatusBadge>
                     </TableCell>
                     <TableCell className="text-right">
                       {c.status === "pending" ? (
                         <div className="flex justify-end gap-2">
-                          <Button size="sm" onClick={() => update(c.challanId, "paid")}>Pay</Button>
-                          <Button size="sm" variant="outline" onClick={() => update(c.challanId, "disputed")}>Contest</Button>
+                          <Button size="sm" onClick={() => update(c.challanId, "paid")}>{tx("Pay")}</Button>
+                          <Button size="sm" variant="outline" onClick={() => update(c.challanId, "disputed")}>{tx("Contest")}</Button>
                         </div>
                       ) : <span className="text-xs text-muted-foreground">—</span>}
                     </TableCell>

@@ -40,14 +40,14 @@ function List({ items, kn }: { items: { en: string; kn: string }[]; kn: boolean 
 }
 
 export default function Guidelines() {
-  const { t, lang } = useI18n();
+  const { t, lang, tx } = useI18n();
   const kn = lang === "kn";
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">{t("guide.title")}</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Step-by-step guidance for citizens and administrators using the BTP portal.
+        <p className={"mt-1 text-sm text-muted-foreground " + (kn ? "font-kn" : "")}>
+          {tx("Step-by-step guidance for citizens and administrators using the BTP portal.")}
         </p>
       </div>
       <Tabs defaultValue="citizens">

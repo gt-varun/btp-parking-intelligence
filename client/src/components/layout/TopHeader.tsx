@@ -11,7 +11,7 @@ import { useI18n } from "@/lib/i18n";
 export function TopHeader() {
   const { theme, toggle } = useTheme();
   const { user, logout } = useAuth();
-  const { lang, setLang, t } = useI18n();
+  const { lang, setLang, t, tx } = useI18n();
   const navigate = useNavigate();
   const [now, setNow] = useState<Date | null>(null);
 
@@ -35,7 +35,7 @@ export function TopHeader() {
           <div className="font-kn text-[11px] tracking-wide text-white/80">ಬೆಂಗಳೂರು ಸಂಚಾರ ಪೊಲೀಸ್</div>
           <div className="text-sm font-semibold md:text-base">
             BTP <span className="text-[var(--saffron)]">·</span>{" "}
-            {user?.role === "admin" ? "Parking Intelligence" : "Citizen Portal"}
+            {user?.role === "admin" ? tx("Parking Intelligence") : tx("Citizen Portal")}
           </div>
         </div>
       </div>
@@ -62,11 +62,11 @@ export function TopHeader() {
 
         {user ? (
           <Button size="sm" variant="outline" onClick={onLogout} className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white">
-            <LogOut className="mr-1.5 h-3.5 w-3.5" /> Sign out
+            <LogOut className="mr-1.5 h-3.5 w-3.5" /> {tx("Sign out")}
           </Button>
         ) : (
           <Button size="sm" onClick={() => navigate("/auth")} className="bg-[var(--saffron)] text-[var(--saffron-foreground)] hover:bg-[var(--saffron)]/90">
-            Sign in
+            {tx("Sign in")}
           </Button>
         )}
       </div>
