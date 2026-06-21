@@ -15,14 +15,24 @@ export function AppShell() {
   const { lang } = useI18n();
   const isAdmin = user?.role === "admin";
 
-  // Public landing — official-site-style chrome, no sidebar/navy TopHeader.
-  const isLanding = !user && pathname === "/";
+  // Public chrome — keep the same horizontal navbar (SiteHeader) on every
+  // public page (Home, About BTP, Rules & Regulations, Platform Guide) for
+  // guests, instead of switching to the vertical sidebar + navy TopHeader.
+  const publicPaths = ["/", "/about", "/rules", "/guidelines"];
+  const isLanding = !user && publicPaths.includes(pathname);
   if (isLanding) {
+    const isHome = pathname === "/";
     return (
       <div className="min-h-screen w-full bg-background">
         <SiteHeader />
         <main className={lang === "kn" ? "font-kn" : ""}>
-          <Outlet />
+          {isHome ? (
+            <Outlet />
+          ) : (
+            <div className="mx-auto max-w-7xl px-4 py-6 md:px-6">
+              <Outlet />
+            </div>
+          )}
         </main>
         <Toaster position="top-right" />
       </div>

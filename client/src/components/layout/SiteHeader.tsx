@@ -40,7 +40,7 @@ export function SiteHeader() {
           <button onClick={() => navigate("/")} className="flex items-center gap-3 text-left">
             <img src={logo} alt="Bangalore Traffic Police" className="h-11 w-11 shrink-0 object-contain" />
             <div className="leading-tight">
-              <div className={`text-base font-bold uppercase tracking-wide text-[var(--navy)] md:text-lg ${lang === "kn" ? "font-kn" : ""}`}>
+              <div className={`text-base font-bold uppercase tracking-wide text-[var(--navy)] dark:text-white md:text-lg ${lang === "kn" ? "font-kn" : ""}`}>
                 {tx("Bangalore Traffic Police")}
               </div>
               <div className={`text-[11px] text-muted-foreground ${lang === "kn" ? "font-kn" : ""}`}>
@@ -83,7 +83,7 @@ export function SiteHeader() {
             <Button
               size="sm"
               onClick={() => navigate("/auth")}
-              className="bg-[var(--saffron)] text-[var(--saffron-foreground)] hover:bg-[var(--saffron)]/90"
+              className="bg-blue-800 text-white hover:bg-blue-900"
             >
               {tx("Sign in")}
             </Button>

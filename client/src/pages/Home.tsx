@@ -49,7 +49,7 @@ function PublicDashboard() {
       {/* Hero — full-bleed banner */}
       <section className="relative w-full overflow-hidden border-b">
         <img src={heroImg} alt="Bangalore Traffic Police officer on duty" className="h-[360px] w-full object-cover object-[center_30%] md:h-[480px]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/75 via-background/40 to-transparent" />
         <div className="absolute inset-0">
           <div className="mx-auto flex h-full max-w-7xl flex-col justify-center px-4 md:px-6">
             <h1 className={`max-w-xl text-4xl font-bold leading-[1.05] text-[var(--navy)] dark:text-white md:text-6xl ${kn ? "font-kn" : ""}`}>
@@ -59,10 +59,10 @@ function PublicDashboard() {
               {tx("Bangalore Traffic Police is committed to creating a safe, disciplined and efficient road environment for everyone.")}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button onClick={() => navigate("/auth")} className="gap-1.5 bg-[var(--saffron)] text-[var(--saffron-foreground)] hover:bg-[var(--saffron)]/90">
+              <Button onClick={() => navigate("/auth")} className="gap-1.5 bg-blue-800 text-white hover:bg-blue-900">
                 <LogIn className="h-4 w-4" /> {tx("Sign in")}
               </Button>
-              <Button variant="outline" onClick={() => navigate("/about")}>
+              <Button variant="outline" onClick={() => navigate("/about")} className="border-2 border-blue-800 bg-white text-blue-800 hover:bg-blue-50 hover:text-blue-800">
                 {tx("Learn more")}
               </Button>
             </div>
