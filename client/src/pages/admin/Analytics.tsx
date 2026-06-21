@@ -61,7 +61,7 @@ export default function Analytics() {
           <Metric label={tx("Total Records")} value={summary.totalViolations.toLocaleString("en-IN")} />
           <Metric label={tx("Junctions Tracked")} value={summary.junctionsTracked} />
           <Metric label={tx("Date Range")} value={tx(summary.dateRange)} />
-          <Metric label={tx("Model Accuracy")} value={(summary.modelAccuracy * 100).toFixed(1) + "%"} />
+          <Metric label={tx("AUC")} value={summary.modelAUC != null ? Number(summary.modelAUC).toFixed(2) : "—"} />
         </CardContent>
       </Card>
 

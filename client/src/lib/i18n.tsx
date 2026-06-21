@@ -118,6 +118,7 @@ export const enToKn: Record<string, string> = {
   "Total Fines": "ಒಟ್ಟು ದಂಡ",
   "Overall Rejection": "ಒಟ್ಟಾರೆ ತಿರಸ್ಕಾರ",
   "Model Accuracy": "ಮಾದರಿ ನಿಖರತೆ",
+  "AUC": "AUC",
   "Junction": "ಜಂಕ್ಷನ್",
   "Junctions": "ಜಂಕ್ಷನ್‌ಗಳು",
   "Violations": "ಉಲ್ಲಂಘನೆಗಳು",
