@@ -6,6 +6,11 @@ Full-stack MERN (MongoDB · Express · React · Node.js) conversion of the Banga
 a real model trained on the 298,450-record BTP dataset.** See [ML Pipeline](#ml-pipeline--real-trained-models-swappable-anytime)
 below for what's actually predicted vs. what's a genuine dataset aggregate.
 
+## Live Demo
+
+- **App (frontend):** https://btp-parking-intelligence.vercel.app/
+- **API (backend):** https://btp-parking-intelligence.onrender.com
+
 ---
 
 ## Stack
@@ -30,7 +35,7 @@ btp-mern/
 ├── ml/                          # ★ Real trained models, NOT hand-typed numbers
 │   ├── data/violations_raw.csv  # The 298,450-record BTP dataset
 │   ├── load_data.py             # Shared cleaning/parsing — every model imports this
-│   ├── model_cli.py             # Capacity-Loss Index (LinearRegression)
+│   ├── model_cli.py             # Capacity-Loss Index (transparent HCM-calibrated formula)
 │   ├── model_forecast.py        # 7-day patrol forecast (GradientBoostingRegressor)
 │   ├── model_ticket_quality.py  # Rejection-risk classifier (LogisticRegression)
 │   ├── model_offenders.py       # Repeat-offender risk tiers (KMeans)
@@ -75,12 +80,45 @@ escalation tier) comes from a Python script in `ml/` that trains on the real
 (monthly/hourly/weekday counts) with nothing to "swap," kept in its own file so it's
 never mistaken for a prediction.
 
-| Script                      | What it predicts                          | Algorithm (swap by editing one file) |
+| Script                      | What it produces                          | Method |
 |------------------------------|--------------------------------------------|----------------------------------------|
-| `model_cli.py`               | Capacity-Loss Index (0–100) per junction   | `LinearRegression` |
+| `model_cli.py`               | Capacity-Loss Index (0–100) per junction   | **Transparent traffic-engineering formula** (HCM-calibrated lane-hours lost — *not* a learned model, by design; see below) |
 | `model_forecast.py`          | 7-day-ahead violation count per junction   | `GradientBoostingRegressor` (recursive rollout) |
 | `model_ticket_quality.py`    | Rejection probability per ticket           | `LogisticRegression` (class-balanced) |
 | `model_offenders.py`         | Escalation risk tier per repeat vehicle    | `KMeans` (k=4, ordered by centroid)  |
+
+### Capacity-Loss Index — why it's a transparent formula, not a "model"
+
+The CLI is the answer to the *"quantify impact on traffic flow"* half of the problem
+statement, so we keep it **honest and auditable** rather than dressing it up as ML. It
+estimates **lane-hours of carriageway capacity lost per junction per day**:
+
+```
+lane_hours_lost = blocking_violations_per_day   # violations_per_day × carriageway_share (from data)
+                × ASSUMED_BLOCK_HOURS            # the ONE assumption (no clearance time in data)
+                × throughput_reduction(footprint)# HCM single-lane obstruction, from the vehicle mix
+                × peak_amplification(concentration) # tighter peaks queue worse, from the data
+```
+
+Every term except `ASSUMED_BLOCK_HOURS` is measured from the 298k-record dataset, and that
+one assumption is a **global multiplier** — it sets the unit (lane-hours) but cannot change
+the junction **ranking**, which is what enforcement acts on. We deliberately removed an
+earlier `LinearRegression` whose target was itself built from these same features: fitting a
+model to reproduce your own formula is circular and adds nothing, so the transparent index is
+the stronger, more defensible claim.
+
+**Pareto insight it surfaces (in `cli_scores.json → concentration`):** citywide capacity loss
+is highly concentrated — the **top 10 junctions account for ~49% of all lane-hours lost, and
+just ~11 junctions cover 50%** — so targeted enforcement of a handful of junctions captures
+most of the benefit.
+
+**Stated limitations (also emitted in the JSON, surfaced in the Model Validation panel):**
+1. **Enforcement/selection bias** — violations are logged where patrols already operate, so
+   this reflects *observed-violation density*, not ground-truth illegal parking; un-patrolled
+   hotspots are under-counted.
+2. **No ground-truth traffic validation** — capacity loss is estimated from engineering rules
+   of thumb, not measured speeds/queues. Validating against probe-vehicle or camera data is
+   the natural next step.
 
 ### To swap a model
 Open the relevant `model_*.py` file, swap the one line that constructs the

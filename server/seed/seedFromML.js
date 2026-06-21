@@ -143,18 +143,26 @@ function buildModelCards({ cli, forecast, tq, offenders }) {
       key: "cli",
       feature: "Junction severity (heat map)",
       model: cli.model,
-      task: "Regression",
-      learning: "Supervised (engineered target)",
+      task: "Deterministic capacity-loss index",
+      learning: "Rule-based · traffic-engineering calibrated (not a learned model)",
       metrics: [
         {
-          label: "CV R²",
-          value: cli.validation?.cvR2Mean != null
-            ? `${cli.validation.cvR2Mean.toFixed(3)} ± ${cli.validation.cvR2Std.toFixed(2)}`
+          label: "Top-10 share of impact",
+          value: cli.concentration?.top10SharePct != null
+            ? `${cli.concentration.top10SharePct}%`
             : null,
         },
-        { label: "In-sample R²", value: cli.validation?.r2?.toFixed?.(3) ?? null },
+        {
+          label: "Junctions = 50% impact",
+          value: cli.concentration?.junctionsForHalfOfImpact != null
+            ? String(cli.concentration.junctionsForHalfOfImpact)
+            : null,
+        },
+        { label: "Junctions scored", value: cli.junctionsScored != null ? String(cli.junctionsScored) : null },
       ].filter((m) => m.value != null),
-      note: `${cli.validation?.cvFolds ?? 5}-fold CV on the lane-hours-lost capacity target`,
+      note: "Transparent lane-hours-lost formula from HCM-style road-capacity rules; every term is measured "
+        + "from the data except one stated block-duration assumption (a global multiplier, ranking-neutral). "
+        + "Caveat: reflects observed-violation density, not un-patrolled hotspots.",
     },
     {
       key: "forecast",
