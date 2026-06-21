@@ -239,18 +239,18 @@
       "rejectionRate": 0.6306
     },
     {
-      "vehicle_type": "LORRY/GOODS VEHICLE",
-      "topViolation": "WRONG PARKING",
-      "topViolationShare": 0.6061,
-      "share": 0.0038,
-      "rejectionRate": 0.3373
-    },
-    {
       "vehicle_type": "HGV",
       "topViolation": "WRONG PARKING",
       "topViolationShare": 0.4808,
       "share": 0.0038,
       "rejectionRate": 0.3455
+    },
+    {
+      "vehicle_type": "LORRY/GOODS VEHICLE",
+      "topViolation": "WRONG PARKING",
+      "topViolationShare": 0.6061,
+      "share": 0.0038,
+      "rejectionRate": 0.3373
     },
     {
       "vehicle_type": "JEEP",

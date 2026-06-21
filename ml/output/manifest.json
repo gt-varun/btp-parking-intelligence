@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-06-19T20:57:04Z",
+  "generatedAt": "2026-06-21T07:20:06Z",
   "models": {
     "cli": {
       "module": "model_cli",
       "outputFile": "ml/output/cli_scores.json",
-      "trainSeconds": 12.21
+      "trainSeconds": 111.97
     },
     "forecast": {
       "module": "model_forecast",
       "outputFile": "ml/output/forecast.json",
-      "trainSeconds": 11.53
+      "trainSeconds": 110.32
     },
     "ticketQuality": {
       "module": "model_ticket_quality",
       "outputFile": "ml/output/ticket_quality.json",
-      "trainSeconds": 105.36
+      "trainSeconds": 1334.68
     },
     "offenders": {
       "module": "model_offenders",
       "outputFile": "ml/output/offenders.json",
-      "trainSeconds": 36.92
+      "trainSeconds": 355.31
     }
   },
-  "totalSeconds": 188.28,
+  "totalSeconds": 2005.97,
   "datasetSummary": {
     "total_records": 298445,
     "date_range": [
