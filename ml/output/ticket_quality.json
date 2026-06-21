@@ -1286,14 +1286,6 @@
       "riskBand": "high"
     },
     {
-      "id": "FKID013599",
-      "junction": "No Junction",
-      "vehicle_type": "CAR",
-      "primary_violation": "PARKING IN A MAIN ROAD",
-      "rejectionRisk": 0.6569,
-      "riskBand": "high"
-    },
-    {
       "id": "FKID013657",
       "junction": "No Junction",
       "vehicle_type": "CAR",
@@ -1303,6 +1295,14 @@
     },
     {
       "id": "FKID013602",
+      "junction": "No Junction",
+      "vehicle_type": "CAR",
+      "primary_violation": "PARKING IN A MAIN ROAD",
+      "rejectionRisk": 0.6569,
+      "riskBand": "high"
+    },
+    {
+      "id": "FKID013599",
       "junction": "No Junction",
       "vehicle_type": "CAR",
       "primary_violation": "PARKING IN A MAIN ROAD",

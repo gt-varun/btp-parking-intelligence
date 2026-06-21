@@ -4,6 +4,7 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import { AppSidebar } from "./AppSidebar";
 import { TopHeader } from "./TopHeader";
+import { SiteHeader } from "./SiteHeader";
 import { ResponsiveNav } from "./ResponsiveNav";
 import { useAuth } from "@/context/AuthContext";
 import { useI18n } from "@/lib/i18n";
@@ -13,6 +14,20 @@ export function AppShell() {
   const { user } = useAuth();
   const { lang } = useI18n();
   const isAdmin = user?.role === "admin";
+
+  // Public landing — official-site-style chrome, no sidebar/navy TopHeader.
+  const isLanding = !user && pathname === "/";
+  if (isLanding) {
+    return (
+      <div className="min-h-screen w-full bg-background">
+        <SiteHeader />
+        <main className={lang === "kn" ? "font-kn" : ""}>
+          <Outlet />
+        </main>
+        <Toaster position="top-right" />
+      </div>
+    );
+  }
 
   return (
     <>

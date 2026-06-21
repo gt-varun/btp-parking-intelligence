@@ -99,6 +99,13 @@ export const enToKn: Record<string, string> = {
   "Sign out": "ಲಾಗ್ ಔಟ್",
   "Learn more": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
   "Bangalore Traffic Police": "ಬೆಂಗಳೂರು ಸಂಚಾರ ಪೊಲೀಸ್",
+  "Safe Roads. Safe Bengaluru.": "ಸುರಕ್ಷಿತ ರಸ್ತೆಗಳು. ಸುರಕ್ಷಿತ ಬೆಂಗಳೂರು.",
+  "Ensuring Safety.": "ಸುರಕ್ಷತೆಯ ಭರವಸೆ.",
+  "Enabling Mobility.": "ಸಂಚಾರ ಸುಗಮ.",
+  "Bangalore Traffic Police is committed to creating a safe, disciplined and efficient road environment for everyone.":
+    "ಬೆಂಗಳೂರು ಸಂಚಾರ ಪೊಲೀಸ್ ಪ್ರತಿಯೊಬ್ಬರಿಗೂ ಸುರಕ್ಷಿತ, ಶಿಸ್ತುಬದ್ಧ ಮತ್ತು ದಕ್ಷ ರಸ್ತೆ ಪರಿಸರವನ್ನು ರೂಪಿಸಲು ಬದ್ಧವಾಗಿದೆ.",
+  "FOR EMERGENCIES": "ತುರ್ತು ಸಂದರ್ಭಗಳಿಗೆ",
+  "DIAL": "ಕರೆ ಮಾಡಿ",
 
   // Common KPI / table labels
   "Total Violations": "ಒಟ್ಟು ಉಲ್ಲಂಘನೆಗಳು",

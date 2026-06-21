@@ -16,7 +16,7 @@ export default function About() {
     <div className="space-y-6">
       <div className="overflow-hidden rounded-xl border bg-card">
         <div className="relative">
-          <img src={heroImg} alt="Bangalore Traffic Police officer at duty" width={1536} height={768} className="h-56 w-full object-cover md:h-72" />
+          <img src={heroImg} alt="Bangalore Traffic Police officer at duty" width={1536} height={768} className="h-56 w-full object-cover object-[center_25%] md:h-72" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)]/90 via-[var(--navy)]/40 to-transparent" />
           <div className="absolute bottom-0 left-0 p-5 text-white">
             <div className="font-kn text-xs text-white/80">ಬೆಂಗಳೂರು ಸಂಚಾರ ಪೊಲೀಸ್</div>

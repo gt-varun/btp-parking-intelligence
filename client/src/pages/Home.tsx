@@ -45,30 +45,33 @@ function PublicDashboard() {
   const finesCollected = challansIssued * 650;
 
   return (
-    <div className="space-y-6">
-      {/* Hero */}
-      <div className="relative overflow-hidden rounded-2xl border shadow-card">
-        <img src={heroImg} alt="BTP" className="h-52 w-full object-cover md:h-64" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)]/90 via-[var(--navy)]/60 to-transparent" />
-        <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-10">
-          <div className={`text-[11px] uppercase tracking-[0.2em] text-white/70 ${kn ? "font-kn" : ""}`}>
-            {kn ? "ಬೆಂಗಳೂರು ಸಂಚಾರ ಪೊಲೀಸ್" : "Bangalore Traffic Police"}
-          </div>
-          <h1 className={`mt-1 max-w-md text-2xl font-semibold text-white md:text-3xl ${kn ? "font-kn" : ""}`}>
-            {t("home.welcome")}
-          </h1>
-          <p className={`mt-2 max-w-sm text-sm text-white/80 ${kn ? "font-kn" : ""}`}>{t("home.sub")}</p>
-          <div className="mt-5 flex gap-2">
-            <Button size="sm" onClick={() => navigate("/auth")} className="gap-1.5 bg-[var(--saffron)] text-[var(--saffron-foreground)] hover:bg-[var(--saffron)]/90">
-              <LogIn className="h-3.5 w-3.5" /> {tx("Sign in")}
-            </Button>
-            <Button size="sm" variant="outline" onClick={() => navigate("/about")} className="border-white/25 bg-white/10 text-white hover:bg-white/20">
-              {tx("Learn more")}
-            </Button>
+    <div>
+      {/* Hero — full-bleed banner */}
+      <section className="relative w-full overflow-hidden border-b">
+        <img src={heroImg} alt="Bangalore Traffic Police officer on duty" className="h-[360px] w-full object-cover object-[center_30%] md:h-[480px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/10" />
+        <div className="absolute inset-0">
+          <div className="mx-auto flex h-full max-w-7xl flex-col justify-center px-4 md:px-6">
+            <h1 className={`max-w-xl text-4xl font-bold leading-[1.05] text-[var(--navy)] dark:text-white md:text-6xl ${kn ? "font-kn" : ""}`}>
+              {tx("Ensuring Safety.")}<br />{tx("Enabling Mobility.")}
+            </h1>
+            <p className={`mt-4 max-w-md text-sm text-muted-foreground md:text-base ${kn ? "font-kn" : ""}`}>
+              {tx("Bangalore Traffic Police is committed to creating a safe, disciplined and efficient road environment for everyone.")}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button onClick={() => navigate("/auth")} className="gap-1.5 bg-[var(--saffron)] text-[var(--saffron-foreground)] hover:bg-[var(--saffron)]/90">
+                <LogIn className="h-4 w-4" /> {tx("Sign in")}
+              </Button>
+              <Button variant="outline" onClick={() => navigate("/about")}>
+                {tx("Learn more")}
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
+      {/* Content */}
+      <div className="mx-auto max-w-7xl space-y-6 px-4 py-8 md:px-6">
       {/* KPIs */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <KpiCard label={tx("Total Violations")} value={totalViolations.toLocaleString("en-IN")} hint={tx("Jan–May 2024")} icon={<Clock className="h-4 w-4" />} />
@@ -135,6 +138,7 @@ function PublicDashboard() {
             </Card>
           </Link>
         ))}
+      </div>
       </div>
     </div>
   );
